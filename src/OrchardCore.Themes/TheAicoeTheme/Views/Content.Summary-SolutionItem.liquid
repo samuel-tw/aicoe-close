@@ -1,0 +1,31 @@
+                    <div class="tabs_item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7">
+                                <div class="tab-solution-content">
+                                    <h3>{{ Model.ContentItem.DisplayText }}</h3>
+                                    <p>{{ Model.ContentItem.Content.SolutionItem.ContextLong.Text }}</p>
+                                    <ul class="tab-list">
+                                        <li>
+                                           {{ Model.ContentItem.Content.SolutionItem.ContextText1.Text }}
+                                        </li>
+                                        <li>
+                                           {{ Model.ContentItem.Content.SolutionItem.ContextText2.Text }}
+                                        </li>
+                                        <li>
+                                            {{ Model.ContentItem.Content.SolutionItem.ContextText3.Text }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="tab-image">
+                                    {% if Model.ContentItem.Content.SolutionItem.Image %}
+                                    {{Model.ContentItem.Content.SolutionItem.Image.Paths.first | asset_url  | resize_url: width:550, height:450, mode:'crop' | img_tag  }}
+                                    {% else %}
+                                        <img src="assets/img/tab-solution.png" alt="image">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>

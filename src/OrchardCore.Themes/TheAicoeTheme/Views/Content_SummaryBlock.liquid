@@ -1,0 +1,62 @@
+{% assign path = Model.ContentItem.Content.BlogPost.Image.Paths.first %}
+{% assign text = Model.ContentItem.Content.BlogPost.Image.MediaTexts.first %}
+{% assign anchor = Model.ContentItem.Content.BlogPost.Image.Anchors.first %}
+<div class="col-lg-4 col-md-6">
+    <div class="blog-single-item">
+        
+        <div class="blog-image">
+
+            
+
+            {% if Model.ContentItem.Content.NewsPost.Video.EmbeddedAddress != null %}
+              
+                 <iframe width="450" height="400" src="{{Model.ContentItem.Content.NewsPost.Video.EmbeddedAddress | replace: "youtu.be", "youtube.com" }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% elsif Model.ContentItem.Content.NewsPost.Thumbnail.Paths.first  != null %}
+
+                {% a display_for:Model.ContentItem %}
+                {{Model.ContentItem.Content.NewsPost.Image.Paths.first | asset_url  | resize_url: width:450, height:300, mode:'crop' | img_tag  }}
+                {% enda %}
+
+            {% elsif Model.ContentItem.Content.Image.Banner.Paths.first  != null %}
+
+                {% a display_for:Model.ContentItem %}
+                {{Model.ContentItem.Content.NewsPost.Image.Paths.first | asset_url  | resize_url: width:450, height:300, mode:'crop' | img_tag  }}
+                {% enda %}
+
+            {% else %}
+            <img src={{"~/TheAicoeTheme/assets/img/blog/blog-1.jpg"}} alt="image">
+
+
+            {% endif %}
+        </div>
+        <div class="blog-description">
+            <ul class="blog-list">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user-alt"></i> {{Model.ContentItem.Content.NewsPost.Issuer.Text }}</a>
+                </li>
+                <li>
+                    {% assign format = "MMMM dd, yyyy" | t %}
+                    {% assign dateTime = "DateTime" | shape_new: utc: Model.ContentItem.CreatedUtc, format: format | shape_stringify %}
+                    <a href="#"> <i class="fas fa-calendar-week"></i>{{ "on {0}" | t: dateTime | raw
+                        }}
+                    </a>
+                </li>
+            </ul>
+            <div class="blog-content">
+                {% a display_for:Model.ContentItem %}
+                <h3>
+
+                    {{ Model.ContentItem.DisplayText }}
+
+                </h3>
+                <p>{{Model.ContentItem.Content.BlogPost.Subtitle.Text }}</p>
+                <div class="blog-btn">
+                    <span class="btn-style-three-js">{{ "詳細內容" |t }} <span></span></span>
+                </div>
+                {% enda %}
+            </div>
+        </div>
+    </div>
+</div>
+

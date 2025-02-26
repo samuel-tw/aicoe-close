@@ -1,0 +1,8 @@
+
+{% assign projects = Model.ContentItem.Content.ProjectLink.ProjectPicker.ContentItemIds | content_item_id  %}
+
+{% for project in projects %}
+{{ project | shape_build_display: "Summary" | shape_render }}
+
+{% endfor %}
+

@@ -1,0 +1,31 @@
+{% zone "Header" %}
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>{{ Model.ContentItem.DisplayText }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endzone %}
+
+<section class="blog-section section-padding">
+    <div class="container">
+        <div class="row">
+
+
+            {{ Model.Content.TermPart | shape_render }}
+
+            
+        </div>
+    </div>
+</section>

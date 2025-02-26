@@ -1,0 +1,16 @@
+<section class="widget widget_categories">
+    <h3 class="widget-title">Categories</h3>
+
+    <ul>
+
+        {% for item in Model.Items %}
+
+        {{ item | shape_render }}
+
+        
+        {% endfor %}
+
+
+    </ul>
+</section>
+

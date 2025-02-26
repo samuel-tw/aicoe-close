@@ -1,0 +1,61 @@
+<!-- Start Testimonials Section -->
+<style>
+
+    .f-carousel {
+        --f-carousel-slide-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .f-carousel {
+            --f-carousel-slide-width: calc(100% / 3);
+        }
+    }
+</style>
+<section class="testimonial-design-two bg-grey section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>{{ Model.ContentItem.DisplayText }} </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="testimonial-slide-two">
+                    <div class="f-carousel" id="myCarousel">
+                        {% assign hots = Model.ContentItem.Content.BagPart.ContentItems %}
+                        {% for hot in hots%}
+
+
+                        <!-- testimonials item -->
+                        <div class="single-testimonial-two f-carousel__slide">
+                            <div class="testimonial-two-content">
+                                {% assign contentItem = hot.HotNews.Post.ContentItemIds.first| content_item_id %}
+                                <a href="{{contentItem.Content.AutoroutePart.Path}}">
+                                    <div class="single-services-two">
+                                        <div class="testimonial-two-content">
+                                            <div class="services-two-img">
+                                                {{hot.HotNews.Image.Paths.first | asset_url  | resize_url: width:300, height:200, mode:'crop' | img_tag  }}
+                                            </div>
+                                            <h3>{{hot.DisplayText}}</h3>
+                                            <p>{{hot.HotNews.Subtitle.Text}}</p>
+
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- End Testimonials Section -->

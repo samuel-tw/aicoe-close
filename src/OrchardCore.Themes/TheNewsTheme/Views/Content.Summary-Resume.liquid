@@ -1,0 +1,40 @@
+				<div class="col-lg-4 col-md-6">
+					{% a display_for:Model.ContentItem %}
+					<div class="single-team-box">
+						
+						<div class="team-image">
+
+
+							{% if Model.ContentItem.Content.Resume.Avator.Paths != null %}
+							{{ Model.ContentItem.Content.Resume.Avator.Paths.first | asset_url  | resize_url: width:300, height:350, mode:'crop' | img_tag  }}
+							
+							{% else %}
+
+							<img src="/TheNewsTheme/assets/img/avator.jpeg" alt="image">
+							{% endif %}
+							<!--
+							<div class="team-social-icon">
+								<a href="#" class="social-color-1"><i class="fab fa-facebook-f"></i></a>
+								<a href="#" class="social-color-2"><i class="fab fa-twitter"></i></a>
+								<a href="#" class="social-color-3"><i class="fab fa-linkedin"></i></a>
+							</div>
+							-->
+						</div>
+						<div class="team-info">
+                            
+							<h3>{{Model.Content.Resume-NameCN | shape_render}}</h3>
+                            <h3>{{Model.Content.Resume-NameEN | shape_render}}</h3>
+                            {% assign categoryTerms = Model.ContentItem.Content.Resume.MemberRole| taxonomy_terms %}
+                            {% for categoryTerm in categoryTerms %}
+							    {% if categoryTerm.DisplayText == "Leader" %}
+                                    <h3 style = "text-align: center">{{ "Project Leader" | t}}</h3>
+                                {% else%}
+                                    <h3 style = "text-align: center">{{"Members" | t}} </h3>
+                                {% endif %}
+                            {% endfor %}
+                            
+						</div>
+					</div>
+					{% enda %}
+				</div>
+

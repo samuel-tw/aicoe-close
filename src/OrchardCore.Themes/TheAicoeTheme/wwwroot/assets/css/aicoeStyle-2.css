@@ -1,0 +1,407 @@
+
+
+/************************************************
+ **  AICOE CSS Library
+ ************************************************/
+
+ /* Universal 覆蓋區*/
+
+ body {
+	
+  font-size: 16px !important;
+  font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+img {
+	width: 70% !important;
+	
+} 
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+p {
+  
+	font-family: 'Noto Sans TC', sans-serif !important;
+  font-size: 16px !important;
+}
+
+li {
+	font-size: 16px;
+	line-height: 1.4;
+	color: #5f5f5f;
+	margin-top: 15px;
+	font-weight: 400;
+	letter-spacing: 0px;
+}
+
+.footer-main-area {
+  background: #092159 !important;
+}
+
+.newsletter-form button{
+  background-color: #1F4EBB !important;
+}
+
+.preloader::before, .preloader::after {
+  background: #071A46 !important;
+}
+
+.go-top {
+  background-color: #1F4EBB !important;
+}
+
+/**************************************
+          AICOE Intro類型元件
+ **************************************/
+ul{
+  padding-left: 2rem;
+}
+
+.projects-details-desc{
+	margin-top: 70px;
+ }
+
+ .projects-details-desc h4 {
+  font-weight: 400;
+	font-size: 18px;
+}
+
+
+
+.projects-details-desc .features-text-ul p {
+	
+	margin-bottom: 5px;
+}
+
+  .projects-details-desc .features-text {
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+} 
+
+
+
+/**************************************
+          AICOE Bullet Button List
+ **************************************/
+
+.projects-details-desc .features-text-ul {
+	margin-top: 15px;
+	/* margin-bottom: 40px; */
+	font-size: 16px;
+}
+
+.projects-details-desc .features-text-ul p {
+	
+	margin-bottom: 5px;
+}
+
+
+.projects-details-desc .features-text-ul ul li {
+	margin-left:-15px; 
+	list-style-type: disc;
+}
+
+
+.projects-details-desc .features-text h4 i {
+	font-size: 16px;
+	margin-right: 4px;
+	color: #092159;
+}
+
+
+
+ .pj-subtitle-content {
+	text-align: left;
+	 
+}
+
+
+
+
+
+.pj-subtitle-content h2{
+
+	color: #ffffff;
+	font-size: 36px;
+	font-weight: 600;
+
+}
+
+.pj-subtitle-content h4{
+
+	color: #ffffff;
+	font-size: 22px;
+	font-weight: 400;
+
+}
+
+
+ .pj-title-content-main{
+	display: flex ;
+	justify-content: center;  
+    width: 100%;
+}
+
+ 
+.pj-title-content-gradient{
+	text-align: center;
+	margin-top: 10px;
+	background: linear-gradient(to bottom right,#00a0e9,#25a98f);
+	padding: 10px;
+	padding-left: 60px;
+	padding-right: 60px;
+
+}
+
+.pj-title-content-gradient h2{
+	margin-bottom: 0;
+	color: #ffffff;
+	font-size: 38px;
+	font-weight: 600;
+}
+
+.pj-title-content-divider{
+	width: 20.5%;
+
+}
+
+
+/* .pj-divide-area{
+	/* background-color: #89e320; 
+	 
+} */
+
+.pj-divide-container{
+	height: 130px;
+	/* text-align: center; */
+	display: flex; 
+  	align-items: center; 
+	  justify-content: center;  
+	background-color: #092159;
+	
+}
+
+.pj-divide-container h2{
+	margin-bottom: 0;
+	color: #ffffff;
+	font-size: 32px;
+	font-weight: 600;
+
+}
+
+.pj-divide-area-arrow{
+
+	width:50px; 
+	height:50px;
+	background-color: #092159;
+	position: relative;
+    left: 50%;
+    margin-left: -26px;
+    margin-top: -25px;
+    z-index: 25;
+    margin-bottom: -25px;
+    clear: both;
+	transform: translateX(-50%) rotate(45deg);
+
+}
+
+
+.pj-content-img{
+    text-align:center;
+    margin-top: 70px;
+    
+}
+
+
+.pj-content-img img{
+    width: 80%;
+    height:auto;
+    float:none;
+    margin:0 auto;
+    
+}
+
+
+
+/**************************************
+          需求七 AboutUs
+ **************************************/
+
+ .pjai-table-wrap {
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+    overflow-x: auto;
+    white-space: pre-wrap; 
+    
+  }
+
+  .pjai-table-wrap table {
+    border-spacing: 5px;
+    width: 100%;
+    table-layout:fixed;
+    border-collapse: collapse;
+    
+  }
+
+
+  .pjai-table-wrap table thead {
+    text-align: center;
+    background-color: #092159;
+    color: white;
+    vertical-align: middle;
+
+  }
+ 
+  .pjai-table-wrap table thead th{
+    border: 3px solid #ffffff;
+    padding-block: 20px;
+
+  }
+
+  .pjai-table-wrap table tbody td {
+    text-align: left;
+    background-color: #F3F6FF;
+    vertical-align: top;
+    padding-block: 30px;
+    padding-inline: 10px;
+    border: 3px solid #ffffff;
+  }
+
+  .pjai-table-wrap table tr td ul{
+    margin-top: -100px;
+    list-style-type: disc;
+  }
+
+
+  .pjai-table-wrap table tr td ul li{
+    color: #000;
+    margin-bottom: -30px;
+  }
+
+/* 需求七上方按鈕 */
+
+  .pjai-button-row {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+  }
+
+
+  .two-line-btn-current {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 200px;
+    height: 100px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #000;
+    text-align: left;
+    position: relative;
+    background: white;
+    margin-right: 20px;
+  }
+  
+  .two-line-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 200px;
+    height: 100px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: gray;
+    text-align: left;
+    position: relative;
+    background: white;
+    margin-right: 20px;
+  }
+  
+  .two-line-btn:hover{
+      
+      color: black;
+  }
+  
+  
+  .two-line-btn:hover .btn-underline
+ {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  
+  .btn-text {
+      
+    font-size: 24px; 
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .btn-text2 {
+    font-size: 15px; 
+    font-weight: 400;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .btn-underline {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+    margin-right: 20px;
+  }
+  
+  .btn-underline-current {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: visible;
+    transform: scaleX(1);
+    transition: all 0.3s ease-in-out 0s;
+    margin-right: 20px;
+  }
+  
+  /* .two-line-btn:active .btn-underline {
+    background-color: #000;
+  } */
+  
+
+  /* .two-line-btn:active .btn-underline-current {
+    background-color: #000;
+  }
+  
+  .two-line-btn:focus .btn-underline-current {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+   */
+
+
+
+
+
+
+
+
+
+
+

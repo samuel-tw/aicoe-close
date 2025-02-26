@@ -1,0 +1,38 @@
+<div class="col-lg-4 col-md-6">
+    <div class="single-project-one">
+        <!--
+        <div class="project-img-box">
+             <iframe width="300" height="200" src="{{Model.ContentItem.Content.VideoBlock.VideoLink.EmbeddedAddress | replace: "youtu.be", "youtube.com" }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        -->
+        <div class="project-img-box">
+            {% assign RawAddress1 = Model.ContentItem.Content.VideoBlock.VideoLink.RawAddress %}
+            <div class="f-carousel" id="myCarousel2">
+                {% if RawAddress1 != "" %}
+
+
+
+                <a class="f-carousel__slide" data-fancybox="gallery2" data-caption="{{Model.ContentItem.Content.TitlePart.Title}}" href="{{ RawAddress1}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                    <img class="card-img-top img-fluid" width="800" height="500" src="http://img.youtube.com/vi/{{ RawAddress1| replace: 'https://youtu.be/','' }}/mqdefault.jpg" />
+                    <i class="bi bi-youtube" style="color:red"></i>
+
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="project-lower-content">
+
+
+            <h3 class="text-center">{{Model.ContentItem.Content.TitlePart.Title}}</h3>
+            {% assign contentItem= Model.ContentItem.Content.VideoBlock.MainProject.ContentItemIds.first | content_item_id %}
+            <p class="mt-3 p4">
+                <i class="bi bi-calendar-check-fill"></i>&emsp;{{ Model.ContentItem.Content.VideoBlock.SpeechDate.Value | date: "%F" }}<br>
+                {{Model.ContentItem.Content.VideoBlock.SeminarName.Text}}
+            </p>
+
+            <a href="{{contentItem| display_url}}" class="btn btn-primary">{{contentItem | display_text}}</a>
+        </div>
+
+    </div>
+</div>
+

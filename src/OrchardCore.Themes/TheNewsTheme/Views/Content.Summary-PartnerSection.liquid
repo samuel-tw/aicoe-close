@@ -1,0 +1,21 @@
+
+<!-- Start Partner Logo Section -->
+<div class="partner-area bg-grey">
+	<div class="container">
+		<div id="partner-carousel" class="partner-carousel owl-carousel owl-theme owl-loaded">
+			{% for Item in Model.ContentItem.Content.BagPart.ContentItems %}
+			<div class="partner-slide-item">
+
+				<a href="{{ Item.Image.Link.Url}}" target="_blank">
+					
+					{{Item.Image.Media.Paths.first | asset_url  | resize_url: width:350, height:150, mode:'crop' | img_tag  }}
+
+
+				</a>
+
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<!-- End Partner Logo Section -->

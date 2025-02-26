@@ -1,0 +1,28 @@
+
+<div class="col-lg-4 col-md-6">
+    <div class="single-project-one">
+        <div class="project-img-box">
+            <iframe width="300" height="200" src="{{Model.ContentItem.Content.VideoBlock.VideoLink.EmbeddedAddress | replace: "youtu.be", "youtube.com" }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+
+        <div class="project-lower-content">
+
+            <p>
+                <!--
+    <i class="bi bi-calendar-check-fill"></i>&emsp;{{ Model.ContentItem.Content.VideoBlock.SpeechDate.Value | local | date: "%d %B %Y" }}</br>
+    -->
+
+                <i class="bi bi-calendar-check-fill"></i>&emsp;{{ Model.ContentItem.Content.VideoBlock.SpeechDate.Value | local | date: "%c" }}</br>
+                {{Model.ContentItem.Content.VideoBlock.SeminarName.Text}}
+
+            </p>
+            <h3><a href="{{Model.ContentItem.Content.VideoBlock.VideoLink.RawAddress}}">{{Model.ContentItem.Content.TitlePart.Title}}</a></h3>
+
+            <button type="button" class="btn btn-outline-info">{{Model.ContentItem.Content.VideoBlock.MainProject.TagNames}}</button>
+        </div>
+    </div>
+</div>
+
+
+

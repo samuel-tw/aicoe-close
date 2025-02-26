@@ -1,0 +1,13 @@
+<section class="widget widget_categories">
+    <h3 class="widget-title">{{"Category:"}}</h3>
+    <ul>
+
+        {% assign catTerms = Model.Field | taxonomy_terms %}
+        {% for catTerm in catTerms %}
+        {% a display_for: catTerm %}
+        <li>{{ catTerm }}</li>
+        {% enda %}
+        {% endfor %}
+
+    </ul>
+</section>

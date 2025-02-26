@@ -1,0 +1,269 @@
+{% zone "Header" %}
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>{{ "News Post" |t }}</h2>
+
+                    <ul>
+                        <!--
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                         -->
+                        <li>{{ Model.ContentItem.DisplayText }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endzone %}
+
+
+
+<!-- Start Blog Details Area -->
+{{Model.ContentItem.Content.NewsPost | console_log }}
+<section class="blog-details-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="blog-details-desc">
+                    {% if Model.ContentItem.Content.NewsPost.Banner.Paths.first != null  %}
+
+                    <div class="article-image">
+                        {{Model.ContentItem.Content.NewsPost.Banner.Paths.first | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag  }}
+                    </div>
+                    {% endif %}
+                    <div class="article-content">
+                        <div class="entry-meta">
+                            <ul>
+                                {% if Model.ContentItem.Content.NewsPost.Date.Value != "" %}
+                                <li>
+                                    <span>
+                                        {{"Posted On:" | t }} {{ Model.ContentItem.Content.NewsPost.Date.Value | date:  " %Y-%m-%d"  }}
+                                    </span>
+                                </li>
+                                {% endif %}
+                                {% if Model.ContentItem.Content.NewsPost.Issuer.Text != "" %}
+                                <li>
+                                    <span>{{ "Source:" | t }}</span>  <a href="#">{{ Model.ContentItem.Content.NewsPost.Issuer.Text }}</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <h3>{{Model.ContentItem.DisplayText}}</h3>
+                        {{ Model.Content.HtmlBodyPart | shape_render }}
+                        <ul class="wp-block-gallery columns-3">
+                            {% if Model.ContentItem.Content.NewsPost.image1.Paths != null %}
+                            <li class="blocks-gallery-item">
+                                <figure>
+                                    <div class="f-carousel" id="myCarousel1">
+
+                                        {% for Image in Model.ContentItem.Content.SpotlightPost.Image1.Paths %}
+
+                                        <a href="{{ Image |asset_url }}" class="f-carousel__slide" data-fancybox="gallery1">
+
+                                            {{Image | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag}}
+
+                                        </a>
+
+                                        {% endfor %}
+
+                                    </div>
+                                </figure>
+                            </li>
+                            {% endif %}
+
+
+                            {% assign RawAddress1 = Model.ContentItem.Content.NewsPost.Video1.RawAddress %}
+                            {% assign RawAddress2 = Model.ContentItem.Content.NewsPost.Video2.RawAddress %}
+                            {% assign RawAddress3 = Model.ContentItem.Content.NewsPost.Video3.RawAddress %}
+                            {% assign RawAddress4 = Model.ContentItem.Content.NewsPost.Video4.RawAddress %}
+                            {% assign RawAddress5 = Model.ContentItem.Content.NewsPost.Video5.RawAddress %}
+                            {% assign RawAddress6 = Model.ContentItem.Content.NewsPost.Video6.RawAddress %}
+
+                            <li class="blocks-gallery-item">
+                                <figure>
+                                    <div class="f-carousel" id="myCarousel2">
+                                        {% if RawAddress1 != "" %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" href="{{ RawAddress1}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" width="800" height="500" src="http://img.youtube.com/vi/{{ RawAddress1| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress2 != ""  %}
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress2 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress2| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress3 != ""  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress3 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress3| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress4 != ""  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress4 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress4| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress5 != ""  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress5 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress5| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress6 != ""  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress6 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress6| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                    </div>
+
+                                </figure>
+
+
+                            </li>
+                        </ul>
+                        {{ Model.Content.MarkdownBodyPart | shape_render }}
+                    </div>
+
+                    <div class="article-footer">
+                        <div class="article-tags">
+
+                            <div>
+                                {% if Culture.Name == "en" %}
+
+
+
+                                {{ Model.Content.NewsPost-Categories | shape_render}}
+
+                                {% else %}
+
+
+                                {{ Model.Content.NewsPost-CategoriesCN  | shape_render}}
+
+                                {% endif %}
+                            </div>
+                            <div>
+                                {% if Culture.Name == "en" %}
+
+
+
+                                {{ Model.Content.NewsPost-Tags  | shape_render}}
+
+                                {% else %}
+
+
+                                {{ Model.Content.NewsPost-TagsCN  | shape_render}}
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        <!--
+                        <div class="article-share">
+                            <ul class="social">
+                                <li>
+                                    <span>
+                                        {{"Share:" |t }}
+                                    </span>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fab fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                            -->
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area" id="secondary">
+                    <section class="widget widget_search">
+                        <form class="search-form search-top" action="{{ "~/search" | href }}" method="get">
+                            <label>
+                                <span class="screen-reader-text">Search for:</span>
+                                <input name="Terms" type="text" class="search-field" placeholder="{{ "Enter your search term(s)" |t }}" autofocus>
+                            </label>
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </section>
+                    <section class="widget widget_scientech_posts_thumb">
+                        <h3 class="widget-title">{{ "Recent Posts" |t }}</h3>
+
+                        {% assign recentBlogPosts = Queries.NewsLP | query %}
+                        {% for item in recentBlogPosts %}
+                        <article class="item">
+                            <a href="#" class="thumb">
+                                <span class="fullimage cover bg2" role="img">
+                                    {{item.ContentItem.Content.NewsPost.Image.Paths.first | asset_url  | resize_url: width:80, height:80, mode:'crop' | img_tag  }}
+                                </span>
+                            </a>
+                            {% a display_for:item.ContentItem %}
+                            <div class="info">
+                                <h4 class="title usmall">
+                                    {{ item | display_text }}
+                                </h4>
+                            </div>
+                            {% enda %}
+
+
+                        </article>
+
+                        {% endfor %}
+
+
+
+
+                    </section>
+
+
+
+                    <section class="widget widget_tag_cloud">
+                        {% if Culture.Name == "en" %}
+                        {% shape "term", alias: "alias:cat-news" %}
+                        {% shape "term", alias: "alias:tags" %}
+                        {% else %}
+                        {% shape "term", alias: "alias:cat-news-cn" %}
+                        {% shape "term", alias: "alias:tagsCN" %}
+                        {% endif %}
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Blog Details Area -->

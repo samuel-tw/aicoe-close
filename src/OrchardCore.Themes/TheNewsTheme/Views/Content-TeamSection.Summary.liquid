@@ -1,0 +1,33 @@
+<!-- Start Team Section -->
+<section class="team-area pt-30 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                </div>
+            </div>
+
+            {{ Model.Content.BagPart | shape_render}}
+
+        </div>
+    </div>
+    
+</section>
+
+                        {% assign recentBlogPosts = Queries.NewsLP | query %}
+                        {% for item in recentBlogPosts %}
+<article class="item">
+    <a href="#" class="thumb">
+        <span class="fullimage cover bg2" role="img">
+            {{item.ContentItem.Content.NewsPost.Image.Paths.first | asset_url  | resize_url: width:80, height:80, mode:'crop' | img_tag  }}
+        </span>
+    </a>
+    {% a display_for:item.ContentItem %}
+    <div class="info">
+        <h4 class="title usmall">
+            {{ item | display_text }}
+        </h4>
+    </div>
+    {% enda %}
+

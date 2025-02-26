@@ -1,0 +1,113 @@
+
+{% assign RawAddress = Model.ContentItem.Content.NewsPost.Video.RawAddress %}
+
+
+<div class="col-lg-4 col-md-6">
+    <div class="blog-single-item">
+        {% if RawAddress  != "" %}
+        <a data-fancybox href="{{ RawAddress}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+            <div class="blog-image">
+
+                <img class="card-img-top img-fluid" style="width:350px;height:233px;" src="http://img.youtube.com/vi/{{ RawAddress| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                <i class="bi bi-youtube"></i>
+        
+
+
+            </div>
+                <div class="blog-description">
+                    <ul class="blog-list">
+                        {% if Model.ContentItem.Content.NewsPost.Issuer.Text != "" %}
+                        <li>
+                            <i class="fa fa-user-alt"></i> {{Model.ContentItem.Content.NewsPost.Issuer.Text }}
+                        </li>
+                        {% endif %}
+
+                        {% if Model.ContentItem.Content.NewsPost.Date.Value != "" %}
+                        <li>
+                            <i class="fas fa-calendar-week"></i>
+                            <span>
+                                {{"Posted On:" | t }} {{ Model.ContentItem.Content.NewsPost.Date.Value | date:  " %Y-%m-%d"  }}
+                            </span>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                    <div class="blog-content">
+
+                        <h3>
+
+                            {{ Model.ContentItem.DisplayText | truncate: 51, "..."  }}
+
+                        </h3>
+                        <p>{{Model.ContentItem.Content.NewsPost.Subtitle.Text }}</p>
+                        <div class="blog-btn">
+                            <span class="btn-style-three-js">{{ "Continue Reading" |t }}  <span></span></span>
+                        </div>
+
+                    </div>
+                </div>
+        </a>
+        {% else %}
+        {% a display_for:Model.ContentItem %}
+        <div class="blog-image">
+
+
+            {% if Model.ContentItem.Content.NewsPost.Thumbnail.Paths.first != null %}
+
+
+            {{ Model.ContentItem.Content.NewsPost.Thumbnail.Paths.first | asset_url  | resize_url: width:450, height:300, mode:'crop' | img_tag }}
+
+
+            {% elsif Model.ContentItem.Content.NewsPost.Banner.Paths.first != null %}
+
+
+            {{ Model.ContentItem.Content.NewsPost.Banner.Paths.first | asset_url  | resize_url: width:450, height:300, mode:'crop' | img_tag  }}
+
+
+            {% else %}
+            <img src={{"/TheNewsTheme/assets/img/blog/blog-1.jpg"}} alt="image">
+
+
+            {% endif %}
+
+
+
+
+        </div>
+        <div class="blog-description">
+            <ul class="blog-list">
+                {% if Model.ContentItem.Content.NewsPost.Issuer.Text != "" %}
+                <li>
+                    <i class="fa fa-user-alt"></i> {{Model.ContentItem.Content.NewsPost.Issuer.Text }}
+                </li>
+                {% endif %}
+
+                {% if Model.ContentItem.Content.NewsPost.Date.Value != "" %}
+                <li>
+                    <i class="fas fa-calendar-week"></i>
+                    <span>
+                        {{"Posted On:" | t }} {{ Model.ContentItem.Content.NewsPost.Date.Value | date:  " %Y-%m-%d"  }}
+                    </span>
+                </li>
+                {% endif %}
+
+            </ul>
+            <div class="blog-content">
+
+                <h3>
+
+                    {{ Model.ContentItem.DisplayText | truncate: 51, "..."  }}
+
+                </h3>
+                <p>{{Model.ContentItem.Content.NewsPost.Subtitle.Text }}</p>
+                <div class="blog-btn">
+                    <span class="btn-style-three-js">{{ "Continue Reading" |t }}  <span></span></span>
+                </div>
+
+            </div>
+        </div>
+        {% enda %}
+        {% endif %}
+    </div>
+</div>
+

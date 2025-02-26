@@ -1,0 +1,33 @@
+{% zone "Header" %}
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    {% assign search = "Search" | t %}
+                    <h2>{% page_title search %}</h2>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>{{ Model.Content.HtmlBodyPart | shape_render }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endzone %}
+
+{{ Model.SearchForm | shape_render }}
+
+{% unless Model.SearchResults %}
+{% if Model.Terms %}
+{% helper "span", validation_for: "Terms", class: "alert alert-danger" %}
+{% endif %}
+{% endunless %}
+
+{{ Model.SearchResults | shape_render }}
+
+{{ Model.Pager | shape_render }}

@@ -1,0 +1,9 @@
+<div class="article-tags">
+    <i class="bi bi-tags-fill"></i><span>&nbsp; Tags: </span>
+    {% assign tagTerms = Model.Field | taxonomy_terms %}
+    {% for tagTerm in tagTerms %}
+    {% a display_for: tagTerm %}
+    {{ tagTerm }}
+    {% enda %}
+    {% endfor %}
+</div>

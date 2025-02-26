@@ -1,0 +1,20 @@
+
+<li class="accordion-item">
+
+    {% shape_clear_alternates Model %}
+    {% shape_type Model "MenuItemLinkProjectMenu" %}
+    {{ Model | shape_render}}
+    <!--
+    {% if Model.HasItems %}
+
+
+            {% for item in Model.Items %}
+            <p>{{item.ContentItem}} </p>
+
+
+            {% endfor %}
+
+    {% endif %}
+    -->
+</li>
+

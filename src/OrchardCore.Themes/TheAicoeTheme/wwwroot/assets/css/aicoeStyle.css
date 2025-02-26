@@ -1,0 +1,335 @@
+
+
+/************************************************
+ **  AICOE CSS Library
+ ************************************************/
+
+ /* Universal */
+
+ .pj-subtitle-content {
+    
+	text-align: left;
+	 
+}
+
+
+.pj-subtitle-content h2{
+
+	color: #ffffff;
+	font-size: 36px;
+	font-weight: 600;
+
+}
+
+.pj-subtitle-content h4{
+
+	color: #ffffff;
+	font-size: 22px;
+	font-weight: 400;
+
+}
+
+
+ .pj-title-content-main{
+	display: flex ;
+	justify-content: center;  
+    width: 100%;
+}
+
+ 
+.pj-title-content-gradient{
+	text-align: center;
+	margin-top: 10px;
+	background: linear-gradient(to bottom right,#00a0e9,#25a98f);
+	padding: 10px;
+	padding-left: 60px;
+	padding-right: 60px;
+
+}
+
+.pj-title-content-gradient h2{
+	margin-bottom: 0;
+	color: #ffffff;
+	font-size: 38px;
+	font-weight: 600;
+}
+
+.pj-title-content-divider{
+	width: 20.5%;
+
+}
+
+
+/* .pj-divide-area{
+	/* background-color: #89e320; 
+	 
+} */
+
+.pj-divide-container{
+	height: 130px;
+	/* text-align: center; */
+	display: flex; 
+  	align-items: center; 
+	  justify-content: center;  
+	background-color: #092159;
+	
+}
+
+.pj-divide-container h2{
+	margin-bottom: 0;
+	color: #ffffff;
+	font-size: 32px;
+	font-weight: 600;
+
+}
+
+.pj-divide-area-arrow{
+
+	width:50px; 
+	height:50px;
+	background-color: #092159;
+	position: relative;
+    left: 50%;
+    margin-left: -26px;
+    margin-top: -25px;
+    z-index: 25;
+    margin-bottom: -25px;
+    clear: both;
+	transform: translateX(-50%) rotate(45deg);
+
+}
+
+
+blockquote, .blockquote {
+	overflow: hidden;
+	border-left-style: solid;
+    border-left-width: 7px;
+    padding-left: 20px;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    font-size: 1em;
+    line-height: 1.5em;
+
+}
+
+blockquote p, .blockquote p {
+	color: #505060;
+	/* line-height: 1.6; */
+	margin-bottom: 0;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px !important;
+}
+
+blockquote cite, .blockquote cite {
+	display: none;
+}
+
+
+.pj-content-img{
+    text-align:center;
+    margin-top: 70px;
+    
+}
+
+
+.pj-content-img img{
+    width: 80%;
+    height:auto;
+    float:none;
+    margin:0 auto;
+    
+}
+
+
+
+/**************************************
+          需求七 AboutUs
+ **************************************/
+
+ .pjai-table-wrap {
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+    overflow-x: auto;
+    white-space: pre-wrap; 
+    
+  }
+
+  .pjai-table-wrap table {
+    border-spacing: 5px;
+    width: 100%;
+    table-layout:fixed;
+    border-collapse: collapse;
+    
+  }
+
+
+  .pjai-table-wrap table thead {
+    text-align: center;
+    background-color: #092159;
+    color: white;
+    vertical-align: middle;
+
+  }
+ 
+  .pjai-table-wrap table thead th{
+    border: 3px solid #ffffff;
+    padding-block: 20px;
+
+  }
+
+  .pjai-table-wrap table tbody td {
+    text-align: left;
+    background-color: #F3F6FF;
+    vertical-align: top;
+    padding-block: 30px;
+    padding-inline: 10px;
+    border: 3px solid #ffffff;
+  }
+
+  .pjai-table-wrap table tr td ul{
+    margin-top: -100px;
+    list-style-type: disc;
+  }
+
+
+  .pjai-table-wrap table tr td ul li{
+    color: #000;
+    margin-bottom: -30px;
+  }
+
+
+
+  .panel-control {
+    position:absolute;
+    opacity:0;
+  }
+
+  .tab-group label {
+    display:inline-block;
+    padding: 0px 30px;
+    color: #A9ABAF;
+    border-bottom:none;
+    /* background-color: #ccc; */
+    bottom:-1px;
+    position:relative;
+  }
+
+
+
+  .content-group {
+    
+    padding: 20px;
+  }
+  .content{display:none;}
+  
+  
+  #radio1:checked ~ .tab-group [for="radio1"],
+  #radio2:checked ~ .tab-group [for="radio2"],
+  #radio3:checked ~ .tab-group [for="radio3"]{color: #000; }
+  
+  #radio1:checked ~ .content-group .content1,
+  #radio2:checked ~ .content-group .content2,
+  #radio3:checked ~ .content-group .content3 {display:block}
+  
+  .tabset > input[type="radio"] {
+    position: absolute;
+    left: -200vw;  
+  }
+  
+  .tabset .tab-panel {
+    display: none;
+  }
+  
+  .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+  .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+  .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+  .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+  .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+  .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+  }
+  
+  /*
+   Styling 
+  */
+  
+  .tabset > label {
+    position: relative;
+    display: inline-block;
+    padding: 15px 75px 25px 15px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 600;
+    color:#A9ABAF;
+    
+  }
+  
+  .tabset > label::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+    width: 200px;
+    height: 4px;
+    background: #fff;
+    
+  }
+  
+  .tabset > label:hover,
+  .tabset > input:focus + label {
+    color: #000;
+    
+  }
+  
+  .tabset > label:hover::after,
+  .tabset > input:focus + label::after,
+  .tabset > input:checked + label::after {
+   
+    background: #000;
+    
+
+  }
+  
+  input:checked + label {
+    color: #000;
+  
+  }
+  
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  
+
+  .tabset {
+    max-width: 65em;
+  }
+
+
+/*******/
+
+
+
+.custom-html-body ul, .custom-html-body ol {
+    margin: 20px;
+    padding: 0;
+    list-style-position: inside;
+}
+
+    .custom-html-body ul li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+        .custom-html-body ul li:hover {
+            background: #eee;
+        }

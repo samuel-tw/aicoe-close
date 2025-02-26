@@ -1,0 +1,28 @@
+
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        {% if Model.CurrentCulture.Name == "zh-Hant" %}
+        <span class="fi fi-tw"></span> 繁體中文
+        {% else %}
+        <span class="fi fi-us"></span>English
+        {% endif %}
+        <em class="fas fa-chevron-down"></em>
+    </a>
+    <ul class="dropdown-menu">
+        {% for culture in Model.SupportedCultures %}
+        {% if culture.Name != Model.CurrentCulture.Name  %}
+        <li class="nav-item">
+            <a href="{{culture.Name | switch_culture_url }}" class=" nav-link">
+                {% if Model.CurrentCulture.Name != "zh-Hant" %}
+                <span class="fi fi-tw"></span>繁體中文
+                {% else %}
+                <span class=" fi fi-us"></span> English
+                {% endif %}
+            </a>
+        </li>
+
+        {% endif %}
+        {% endfor %}
+
+    </ul>
+</li>

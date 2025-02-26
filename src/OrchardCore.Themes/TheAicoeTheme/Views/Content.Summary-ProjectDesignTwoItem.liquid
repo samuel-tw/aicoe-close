@@ -1,0 +1,19 @@
+				<div class="col-lg-4 col-md-6">
+					<div class="single-project-two">
+						<div class="project-two-img-box">
+
+                        {% if  Model.ContentItem.Content.ProjectDesignTwoItem.Image %}
+                            {{Model.ContentItem.Content.ProjectDesignTwoItem.Image.Paths.first | asset_url  | resize_url: width:300, height:200, mode:'crop' | img_tag  }}
+                        {% else %}
+                            <img src="assets/img/projects/projects-two-1.jpg" alt="image">
+                        {% endif %}
+							
+						</div>
+						<div class="project-two-contant-info">
+							<div class="project-info-overlay">
+								<h5{{Model.ContentItem.DisplayText}}</h5>
+								<h3><a href="{{Model.ContentItem.Content.ProjectDesignTwoItem.SubtitleLink.Url}}">{{Model.ContentItem.Content.ProjectDesignTwoItem.SubtitleLink.Text}}</a></h3>
+							</div>
+						</div>
+					</div>
+				</div>

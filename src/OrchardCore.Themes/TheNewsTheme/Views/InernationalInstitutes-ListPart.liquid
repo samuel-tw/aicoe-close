@@ -1,0 +1,46 @@
+<!-- Start Faq Section -->
+<section class="faq-section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="faq-accordion">
+                    <ul class="accordion">
+
+
+
+                        {% for item in Model.ContentItems %}
+                        {% if forloop.first == true %}
+                        {% assign show = "show" %}
+                        {% assign active = "active" %}
+                        {%else %}
+                        {% assign show = "" %}
+                        {% assign active = "" %}
+                        {% endif %}
+                        <li class="accordion-item">
+                            <a class="accordion-title {{active}}" href="javascript:void(0)">
+                                <i class="fa fa-caret-down"></i>
+                                {{ item.DisplayText}}
+                            </a>
+                            <div class="accordion-content {{show}}">
+                                {{ item | shape_build_display: "Summary" | shape_render }}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% assign previousText = "← "  %}
+    {% assign nextText = "→"  %}
+    {% assign previousClass = "prev page-numbers" | split: " " %}
+    {% assign nextClass = "next page-numbers" | split: " "  %}
+    {% assign itemClasses = "page-numbers current" | split: " " %}
+
+    {% shape_pager Model.Pager previous_text: previousText, next_text: nextText,
+    previous_class: previousClass, next_class: nextClass, tag_name: "div", item_tag_name: "div", attributes: "{\"key1\": \"value1\",\"key2\":\"value2\"}", item_attributes: "{\"key1\": \"value1\",\"key2\":\"value2\"}", classes: "pagination-area", item_classes: itemClasses %}
+
+    {{ Model.Pager | shape_render }}
+
+</section> 

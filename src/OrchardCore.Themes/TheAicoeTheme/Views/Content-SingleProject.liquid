@@ -1,0 +1,175 @@
+
+{% zone "Header" %}
+<div class="page-title-area">
+<div class="d-table">
+    <div class="d-table-cell">
+        <div class="container">
+            <div class="page-title-content">
+                <h2>{{ "AICoE Project" | t }}</h2>
+                <ul>
+                    <!--
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                     -->
+                    <li>{{ Model.ContentItem.DisplayText }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endzone %}
+
+<!-- Start Blog Details Area -->
+<section class="blog-details-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area" id="secondary">
+
+
+                    {% if Culture.Name == "en" %}
+                    {% shape "menu", alias: "alias:project-menu-1", cache_id: "project-menu-1", cache_fixed_duration: "00:00:01", cache_tag: "alias:project-menu-1" %}
+                    {% else %}
+                    {% shape "menu", alias: "alias:project-menu-2", cache_id: "project-menu-2", cache_fixed_duration: "00:00:01", cache_tag: "alias:project-menu-2" %}
+                    {% endif %}
+
+                                                           
+                </aside>
+            </div>
+        
+
+            <div class="col-lg-8 col-md-12">
+                <div class="blog-details-desc">
+                    {% if Model.ContentItem.Content.SingleProject.Image.Paths != null %}
+                    <div class="article-image">
+                        {{Model.ContentItem.Content.SingleProject.Image.Paths.first | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag  }}
+                    </div>
+                    {% endif %}
+
+                    <div class="article-content">
+                        <h3>{{"Project Name" |t }}</h3>
+                        <h5>{{ Model.ContentItem.DisplayText}}</h5>
+                        <h5>{{ Model.Content.SingleProject-Subtitle| shape_render }}</h5>
+                        <hr />
+                        <h4>{{"Project Goal" | t }}</h4>
+                        {{ Model.Content.SingleProject-ProjectGoalCN | shape_render }}
+                        {{ Model.Content.SingleProject-ProjectGoalEN | shape_render }}
+                        <hr />
+                        <h4>{{ "Project Description" | t}} </h4>
+                        {{ Model.Content.SingleProject-ProjectOverviewCN | shape_render }}
+                        {{ Model.Content.SingleProject-ProjectOverviewEN | shape_render }}
+
+
+                        {{ Model.ContentItem.Content.SingleProject.Milestone.Html}}
+
+                        {% if Model.ContentItem.Content.SingleProject.Milestone.Html != null %}
+
+                        
+                        <hr />
+                        <h4>{{ "Milestone" | t}} </h4>
+                        {{ Model.Content.SingleProject-Milestone| shape_render }}
+
+                        {% endif %}
+
+
+                        {% assign contentItems= Model.ContentItem.Content.SingleProject.HistoryData.ContentItemIds| content_item_id %}
+                        {% for contentItem in contentItems %}
+
+
+                        <hr class=" = " my-4" />
+                        <div class="blog-btn d-flex justify-content-around">
+                            {%if Model.ContentItem.Content.SingleProject.Achievement.Paths.first != null %}
+                            <a href="{{Model.ContentItem.Content.SingleProject.Achievement.Paths.first | asset_url}}" data-fancybox data-caption="{{ "Achievements" |t}} - {{ Model.ContentItem.DisplayText}}" class="btn-style-three-js">{{ "Achievements" |t}}</a>
+                            {% endif %}
+                            <a href="Contents/ContentItems/{{ contentItems.first.ContentItemId}}" class="btn-style-three-js">{{ "Historical Data" |t}}</a>
+
+                        </div>
+
+                        {% endfor %}
+
+                        {{ Model.Content.HtmlBodyPart | shape_render }}
+
+                        {{ Model.Content.NewsPost-Category | shape_render}}
+
+
+                        <div class="article-footer">
+                            {{ Model.Content.NewsPost-Tags | shape_render }}
+
+                            {{ Model.Content.ContentsMetadata | shape_render }}
+
+
+                            <!--
+        <div class="article-share">
+            <ul class="social">
+                <li><span>Share:</span></li>
+                <li>
+                    <a href="#"> <i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fab fa-instagram"></i></a>
+                </li>
+            </ul>
+        </div>
+        -->
+                        </div>
+
+                        <section class="team-area pt-30 pb-100">
+                            <div class="container">
+                                <!--
+            <div class="row">
+                <div class="jumbotron">
+                    <h3 class="display-5">{{ "Co-projects List" | t }}</h3>
+                    <p class="lead">
+                        {{ "This plan is divided into the following sub-projects according to the attributes of each work, and will be executed by different professional teams" | t }}
+                    </p>
+                    <hr class="my-4">
+                    <div class="spotlight-group">
+                        {% for poster in Model.ContentItem.Content.BagPart.ContentItems %}
+                        <a class="spotlight" data-download="true" data-title="{{ poster.DisplayText
+                    }}" href="{{poster.SubProject.poster.Paths.first | asset_url  }}">
+                            <h4><i class="bi bi-file-earmark-ppt-fill"></i>&nbsp{{ poster.DisplayText }}</h4>
+                        </a>
+
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+                -->
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="section-title">
+                                            <h2>{{"Project Members" |t}}</h2>
+                                        </div>
+                                    </div>
+                                    {{ Model.Content.ListPart | shape_render }}
+                                </div>
+                            </div>
+
+                        </section>
+
+
+                    </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    </div>
+    
+</section>
+   
+
+
+
+    <!-- End Blog Details Area -->
+
+

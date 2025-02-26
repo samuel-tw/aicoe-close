@@ -1,0 +1,240 @@
+
+{% zone "Header" %}
+<div class="page-title-area">
+<div class="d-table">
+    <div class="d-table-cell">
+        <div class="container">
+			<div class="page-title-content">
+				<h2>{{ Model.ContentItem.Content.Resume.ProjectName.Text }}</h2>
+
+
+			</div>
+        </div>
+    </div>
+</div>
+</div>
+{% endzone %}
+	<!-- Start Services Details Area -->
+	<section class="services-details-area ptb-100">
+		<div class="container">
+			<div class="services-details-overview services-details-block-one">
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<div class="services-step-wrapper">
+							<div class="services-step-title">
+								<h1 class="d-flex justify-content-center">
+									<i class="bi bi-person-circle"></i>&ensp;{{Model.ContentItem.Content.Resume.NameCN.Text}}
+								</h1>
+							</div>
+							<div class="services-step-content">
+								<h4>
+									<span class="fa fa-graduation-cap" aria-hidden="true"></span>&ensp;{{"Educations" | t}}
+								</h4>
+								<ul class="features-list">
+									{% if Model.ContentItem.Content.Resume.Education1CN.Text != "" %}
+									<li style="font-size:18px">{{Model.Content.Resume-Education1CN | shape_render}}</li>
+									{% endif%}
+									{% if Model.ContentItem.Content.Resume.Education2CN.Text != "" %}
+									<li style="font-size:18px">{{Model.Content.Resume-Education2CN | shape_render}}</li>
+									{% endif%}
+
+									{% if Model.ContentItem.Content.Resume.Education3CN.Text != "" %}
+									<li style="font-size:18px">{{Model.Content.Resume-Education3CN | shape_render}}</li>
+									{% endif%}
+
+								</ul>
+								</br class="my-6">
+								<h4><i class="bi bi-person-lines-fill"></i>&ensp;{{ "Experience" | t }}</h4>
+								<ul class="features-list">
+									{% if Model.ContentItem.Content.Resume.Experience1CN.Text != "" %}
+									<li style="font-size:18px">{{Model.Content.Resume-Experience1CN | shape_render}}</li>
+									{% endif%}
+									{% if Model.ContentItem.Content.Resume.Experience2CN.Text != "" %}
+									<li style="font-size:18px">{{Model.Content.Resume-Experience2CN | shape_render}}</li>
+									{% endif%}
+
+									{% if Model.ContentItem.Content.Resume.Experience3CN.Text != "" %}
+									<li style="font-size:18px">{{Model.Content.Resume-Experience3CN | shape_render}}</li>
+									{% endif%}
+
+								</ul>
+								</br class="my-6">
+								<h4>
+									<i class="bi bi-building-fill"></i>&ensp;{{"Position" |t }}
+								</h4>
+								<ul class="features-list">
+									<li style="font-size:18px">{{"Organization： "|t}}{{ Model.ContentItem.Content.Resume.Occupation.Text }}</li>
+
+									<li style="font-size:18px">{{"Job Title： "|t}}{{ Model.ContentItem.Content.Resume.JobTitle.Text }}</li>
+
+								</ul>
+
+
+
+
+							</div>
+						</div>
+					</div>
+					<hr class="my-4">
+					<div class="col-lg-6 col-md-12">
+						<div class="services-step-image">
+
+							{% if Model.ContentItem.Content.Resume.Avator.Paths != null %}
+							{{ Model.ContentItem.Content.Resume.Avator.Paths.first | asset_url  | resize_url: width:300, height:350, mode:'crop' | img_tag  }}
+							{% else %}
+
+							<img src="/TheAicoeTheme/assets/img/avator.jpeg" alt="image">
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="services-details-overview services-details-block-two">
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<div class="services-step-image">
+							<!--
+			{% if Model.ContentItem.Content.Resume.Image.Paths != null  %}
+			{{ Model.ContentItem.Content.Resume.Image.Paths.first | asset_url  | resize_url: width:550, height:360, mode:'crop' | img_tag  }}
+
+			{% else %}
+
+
+			<img src="/TheAicoeTheme/assets/img/Img550*360.jpeg">
+			{% endif %}
+			-->
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12">
+						<div class="services-step-wrapper">
+							<div class="services-step-title">
+								<div class="services-step-title">
+									<!--
+	<div class="services-step-content">
+		<h4>
+			<i class="bi bi-building-fill"></i>&ensp;{{"現職" |t }}
+		</h4>
+		<ul class="features-list">
+			<li>{{"單位： "|t}}{{ Model.ContentItem.Content.Resume.Occupation.Text }}</li>
+
+			<li>{{"職稱： "|t}}{{ Model.ContentItem.Content.Resume.JobTitle.Text }}</li>
+
+		</ul>
+
+			<br class="my-4">
+			<h4><i class="bi bi-eye-fill"></i>&ensp;{{"研究領域" | t}}</h4>
+			<ul class="features-list">
+				{{Model.Content.Resume-ResearchCN | shape_render}}
+			</ul>
+
+		</div>
+				-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--
+	<div>
+		<br class="my-4">
+		<h4 class="d-flex justify-content-center"><i class="bi bi-book-fill"></i>&ensp;{{"代表作" | t }}</h4>
+		<ul class="features-list">
+			{{Model.Content.Resume-PapersCN | shape_render}}
+		</ul>
+	</div>
+	-->
+				</div>
+				<hr class="my-4">
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="projects-details-desc">
+						<h3 class="d-flex justify-content-center">{{ "Related Links" |t}}</h3>
+						<div class="project-details-info d-flex justify-content-center">
+							<!--
+		<div class="single-info-box">
+			<h4>Author</h4>
+			<span>Ervin Simmons</span>
+		</div>
+		<div class="single-info-box">
+			<h4>Category</h4>
+			<span>Analytics, Technologies</span>
+		</div>
+	-->
+
+							<div class="single-info-box">
+								<h4> {{ "Personal Profile" | t }}</h4>
+								<ul class="social">
+									{%  if Model.ContentItem.Content.Resume.CV.Url != "" %}
+									<li><a href="{{Model.ContentItem.Content.Resume.CV.Url}}"><i class="bi bi-link"></i></a></li>
+									{% endif %}
+								</ul>
+
+							</div>
+
+							<div class="single-info-box">
+
+								<h4>{{ "Video" |t }}</h4>
+								<ul class="social">
+									<li>
+										{%  if Model.ContentItem.Content.Resume.Film1.RawAddress != "" %}
+
+										<a href="{{Model.ContentItem.Content.Resume.Film1.RawAddress}}" data-fancybox="group-1">
+
+
+											<i class="fab fa-youtube" style="font-size: 15px "></i>
+
+										</a>
+
+										{% endif %}
+									</li>
+									<li>
+										{%  if Model.ContentItem.Content.Resume.Film2.RawAddress != "" %}
+
+										<a href="{{Model.ContentItem.Content.Resume.Film2.RawAddress}}" data-fancybox="group-1">
+
+
+											<i class="fab fa-youtube" style="font-size: 15px "></i>
+
+										</a>
+
+										{% endif %}
+									</li>
+									<li>
+										{%  if Model.ContentItem.Content.Resume.Film3.RawAddress != "" %}
+
+										<a href="{{Model.ContentItem.Content.Resume.Film3.RawAddress}}" data-fancybox="group-1">
+
+
+											<i class="fab fa-youtube" style="font-size: 15px "></i>
+
+										</a>
+
+										{% endif %}
+									</li>
+								</ul>
+
+							</div>
+							<div class="single-info-box">
+								<h4>{{ "Downloads" |t }}</h4>
+								<ul class="social">
+									{%  if Model.ContentItem.Content.Resume.DownloadLink1.Url != "" %}
+									<li>
+										<a href="{{ Model.ContentItem.Content.Resume.DownloadLink1.Url}}" download><i class="bi bi-book"></i></a>
+									</li>
+									{% endif %}
+									{%  if Model.ContentItem.Content.Resume.DownloadLink2.Url != "" %}
+									<li>
+										<a href="{{ Model.ContentItem.Content.Resume.DownloadLink2.Url}}" download><i class="bi bi-book"></i></a>
+									</li>
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+		
+	</section>
+	<!-- End Services Details Area -->

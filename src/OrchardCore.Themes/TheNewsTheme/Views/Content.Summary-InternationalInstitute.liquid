@@ -1,0 +1,79 @@
+ {% if Culture.Name != "en" %}
+<div class="jumbotron">
+    <p>
+        <i class="bi bi-app-indicator"></i></i>&ensp; <b class="text-primary">應用領域: </b>&ensp;
+        <div>{{ Model.Content.InternationalInstitute-Territory | shape_render}}</div>
+    </p>
+
+    <p>
+        <i class="bi bi-arrow-repeat"></i> &ensp;<b class="text-success">國際合作:</b> &ensp;
+        <div>{{ Model.Content.InternationalInstitute-Cooperaion | shape_render}}</div>
+    </p>
+
+    <p>
+        <i class="bi bi-person-rolodex"></i> &ensp;<b class="text-warning">核心技術聚焦:</b> &ensp;
+        <div>{{ Model.Content.InternationalInstitute-CoreTech | shape_render}}</div>
+    </p>
+
+    <p>
+        <i class="bi bi-browser-chrome"></i> &ensp;<b class="text-info">推動重點:</b> &ensp;
+        <div >{{ Model.Content.InternationalInstitute-KeyPoints | shape_render}}</div>
+    </p>
+
+
+</div>
+
+<!--
+<div class="card-group text-center " ">
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header border-primary  bg-primary text-center text-white">{{ "應用領域"|t}}</div>
+        <div class="card-body text-primary ">
+            <div class="card-text">{{ Model.Content.InternationalInstitute-Territory | shape_render}}</div>
+        </div>
+    </div>
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-success border-success text-white text-center">{{ "國際合作"|t}}</div>
+        <div class="card-body text-success">
+            <div class="card-text">{{ Model.Content.InternationalInstitute-Cooperaion | shape_render}}.</div>
+        </div>
+    </div>
+    <div class="card border-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-warning border-warning text-white text-center">{{ "核心技術聚焦"|t}}</div>
+        <div class="card-body text-warning">
+            <div class="card-text">{{ Model.Content.InternationalInstitute-CoreTech | shape_render}}</div>
+        </div>
+    </div>
+    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-secondary border-secondary text-center text-white">{{ "推動重點"|t}}</div>
+        <div class="card-body text-info">
+            <div class="card-text">{{ Model.Content.InternationalInstitute-KeyPoints | shape_render}}</div>
+        </div>
+    </div>
+-->
+    {% else %}
+<div class="jumbotron">
+    <p>
+        <i class="bi bi-globe"></i>&ensp; <b class="text-primary">Country: </b>&ensp;
+        <br /> {{ Model.ContentItem.Content.InternationalInstitute.Country.Text}}
+    </p>
+
+    <p>
+        <i class="bi bi-chat-right-text"></i> &ensp;<b class="text-success">Introduction:</b> &ensp;
+        <br /> {{ Model.ContentItem.Content.InternationalInstitute.Introduction.Text}}
+    </p>
+
+    <p>
+        <i class="bi bi-person-rolodex"></i> &ensp;<b class="text-warning">Contact Informaion:</b> &ensp;
+        <br />{{ Model.ContentItem.Content.InternationalInstitute.ContactInformation.Text}}
+    </p>
+
+    <p>
+        <i class="bi bi-browser-chrome"></i> &ensp;<b class="text-info">Website:</b> &ensp;
+        <br /><a href="{{ Model.ContentItem.Content.InternationalInstitute.Website.Url}}">{{ Model.ContentItem.Content.InternationalInstitute.Website.Text}}</a>
+    </p>
+
+
+</div>
+    {% endif %}
+
+

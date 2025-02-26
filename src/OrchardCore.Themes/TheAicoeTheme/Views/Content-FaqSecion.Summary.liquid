@@ -1,0 +1,26 @@
+
+
+	<!-- Start Faq Section -->
+	<section class="faq-section home-faq-area section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-12 col-sm-12">
+					<div class="home-faq-title-info">
+						<h6>{{Model.ContentItem.DisplayText}}</h6>
+						<h2>{{Model.ContentItem.Contentt.FaqSection.Subtitle.Text}}</h2>
+						<p>{{Model.ContentItem.Content.FaqSection.ContextText.Text}}</p>
+						<a class="btn-style-three-js" href="{{Model.ContentItem.Content.FaqSection.MoreQuestion.Url}}"">{{Model.ContentItem.Content.FaqSection.MoreQuestion.Text}} <span></span></a>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-12 col-sm-12">
+					<div class="faq-accordion">
+                        <ul class="accordion">
+                                {% shape_clear_classes BagPart %}
+                            	{{ Model.Content.BagPart | shape_render}}					
+                        </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Faq Section -->

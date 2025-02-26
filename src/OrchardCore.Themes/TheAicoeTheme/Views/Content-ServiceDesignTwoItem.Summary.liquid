@@ -1,0 +1,17 @@
+<div class="col-lg-4 col-md-6">
+    <div class="single-services-two">
+        <div class="services-two-img">
+            {% if  Model.ContentItem.Content.ServiceDesignTwoItem.Image %}
+            {{Model.ContentItem.Content.ServiceDesignTwoItem.Image.Paths.first | asset_url  | resize_url: width:300, height:200, mode:'crop' | img_tag  }}
+            {% else %}
+            <img src="assets/img/services/service-3.jpg" alt="img">
+            {% endif %}
+
+        </div>
+        <h3>{{Model.ContentItem.DisplayText}}</h3>
+        <p>{{Model.ContentItem.Content.ServiceDesignTwoItem.ContextText.Text}}</p>
+        <div class="services-btn-link">
+            <a href="{{Model.ContentItem.Content.ServiceDesignTwoItem.ReadMore.Url}}" class="btn-style-four">{{Model.ContentItem.Content.ServiceDesignTwoItem.ReadMore.Text}} <span>+</span></a>
+        </div>
+    </div>
+</div>

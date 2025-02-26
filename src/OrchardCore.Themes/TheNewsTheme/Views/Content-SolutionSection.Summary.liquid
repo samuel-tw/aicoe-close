@@ -1,0 +1,37 @@
+<!-- Start Tabs Solutions Section -->
+    <section class="tab-section pt-30 pb-100">
+        <div class="container">
+            <div class="tab solutions-list-tab">
+                <ul class="tabs">
+                    <li>
+                        <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink1.Url }}">
+                            <span>{{ Model.ContentItem.Content.SolutionSection.SolutionLink1.Text }}</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink2.Url }}">
+                            <span>{{ Model.ContentItem.Content.SolutionSection.SolutionLink2.Text }}</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink3.Url }}">
+                            <span>{{ Model.ContentItem.Content.SolutionSection.SolutionLink3.Text }}</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink4.Url }}">
+                            <span>{{ Model.ContentItem.Content.SolutionSection.SolutionLink4.Text }}</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab_content">
+                    {{ Model.Content.BagPart | shape_render}}
+                </div>
+            
+            </div>
+        </div>
+    </section>
+<!-- End Tabs Solutions Section -->

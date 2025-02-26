@@ -1,0 +1,74 @@
+{% assign path = Model.ContentItem.Content.BlogPost.Image.Paths.first %}
+{% assign text = Model.ContentItem.Content.BlogPost.Image.MediaTexts.first %}
+{% assign anchor = Model.ContentItem.Content.BlogPost.Image.Anchors.first %}
+
+
+<div class="col-lg-4 col-md-6">
+    <div class="blog-single-item">
+        
+        <div class="blog-image">
+
+            {% assign RawAddress = Model.ContentItem.Content.PolicyPost.Video.RawAddress %}
+            {% if RawAddress != null %}
+            
+                    <a data-fancybox href="{{ RawAddress }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                        <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                    </a>
+
+            {% elsif Model.ContentItem.Content.PolicyPost.Thumbnail.Paths.first != "" %}
+
+            {% a display_for:Model.ContentItem %}
+            {{ Model.ContentItem.Content.PolicyPost.Tumbnail.Paths.first | asset_url  | resize_url: width:450, height:300, mode:'crop' | img_tag }}
+            {% enda %}
+
+            {% elsif Model.ContentItem.Content.PolicyPost.Banner.Paths.first != "" %}
+
+            {% a display_for:Model.ContentItem %}
+            {{ Model.ContentItem.Content.PolicyPost.Banner.Paths.first | asset_url  | resize_url: width:450, height:300, mode:'crop' | img_tag  }}
+            {% enda %}
+
+            {% else %}
+            <img src={{"/TheAicoeTheme/assets/img/blog/blog-1.jpg"}} alt="image">
+
+
+            {% endif %}
+
+
+
+
+        </div>
+        <div class="blog-description">
+            <ul class="blog-list">
+                {% if Model.ContentItem.Content.PolicyPost.Issuer.Text != "" %}
+                <li>
+                    <i class="fa fa-user-alt"></i> {{Model.ContentItem.Content.PolicyPost.Issuer.Text }}
+                </li>
+                {% endif %}
+
+                {% if Model.ContentItem.Content.PolicyPost.Date.Value != "" %}
+                <li>
+                    <i class="fas fa-calendar-week"></i>
+                        <span>
+                            {{"Posted On:  " | t }} {{ Model.ContentItem.Content.PolicyPost.Date.Value | date:  " %Y-%m-%d"  }}
+                        </span>
+                </li>
+                {% endif %}
+
+            </ul>
+            <div class="blog-content">
+                {% a display_for:Model.ContentItem %}
+                <h3>
+
+                    {{ Model.ContentItem.DisplayText | truncate: 51, "..."  }}
+
+                </h3>
+                <p>{{Model.ContentItem.Content.PolicyPost.Subtitle.Text }}</p>
+                <div class="blog-btn">
+                    <span class="btn-style-three-js">{{ "Continue Reading" |t }}  <span></span></span>
+                </div>
+                {% enda %}
+            </div>
+        </div>
+    </div>
+</div>
+

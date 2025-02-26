@@ -1,0 +1,32 @@
+
+
+
+
+<li class="nav-item">
+ 
+    <a href="#" class="nav-link">
+        {% if Culture.Name != "en" %}
+        <span class="fi fi-tw"></span> 繁體中文
+        {% else %}
+        <span class="fi fi-us"></span>English
+        {% endif %}
+        <em class="fas fa-chevron-down"></em>
+    </a>
+    <ul class="dropdown-menu">
+        
+        <li class="nav-item">
+            {% if Culture.Name == "en" %}
+                <a href="{{ "zh-Hant" | switch_culture_url }}" class=" nav-link">
+                <span class="fi fi-tw"></span>繁體中文
+                </a>
+             {% else %}
+                <a href="{{ "en" | switch_culture_url }}" class=" nav-link">
+                    <span class="fi fi-us"></span>English
+                   
+                </a>
+             {% endif %}
+        </li>
+
+
+    </ul>
+</li>

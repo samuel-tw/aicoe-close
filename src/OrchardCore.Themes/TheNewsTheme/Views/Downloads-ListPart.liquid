@@ -1,0 +1,35 @@
+<!-- Start News Section -->
+<section class="blog-section section-padding">
+    <div class="container">
+        
+            {% for item in Model.ContentItems %}
+            {{ item | shape_build_display: "Summary" | shape_render }}
+            {% endfor %}
+
+            {% assign previousText = "＜"|t%}
+            {% assign nextText = "＞" |t %}
+            {% assign pageSize=2 %}
+            {% assign showNext=True %}
+
+
+            {% assign previousClass = "prev page-numbers" %}
+            {% assign nextClass = "next page-numbers" %}
+            {% assign itemClasses = "page-numbers"  %}
+
+            {% shape_pager Model.Pager previous_text: previousText, next_text: nextText,
+            previous_class: previousClass, next_class: nextClass, item_classes: itemClasses, page_size : pageSize, show_next :showNext %}
+
+
+            <div class="col-lg-12 col-md-12">
+                <div class="pagination-area">
+
+                    {{ Model.Pager | shape_render }}
+
+                </div>
+            </div>
+        
+    
+    </div>
+</section>
+<!-- End News Section -->
+

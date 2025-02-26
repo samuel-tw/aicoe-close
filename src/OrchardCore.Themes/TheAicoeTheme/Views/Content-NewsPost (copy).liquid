@@ -1,0 +1,148 @@
+{% zone "Header" %}
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>{{ Model.ContentItem.Author }}</h2>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>{{ Model.ContentItem.DisplayText }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endzone %}
+
+
+<!-- Start Blog Details Area -->
+<section class="blog-details-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="blog-details-desc">
+                    {% if Model.ContentItem.Content.NewsPost.Image.Paths != null  %}
+                    <div class="article-image">
+                        {{Model.ContentItem.Content.NewsPost.Image.Paths.first | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag  }}
+                    </div>
+                    {% endif %}
+                    <div class="article-content">
+                        <div class="entry-meta">
+                           
+                          
+                            <ul>
+                                <li>
+                                    {% assign format = "MMMM dd, yyyy" | t %}
+                                    {% assign dateTime = "DateTime" | shape_new: utc: Model.ContentItem.DateTime, format: format | shape_stringify %}
+                                    <span>{{"Posted On:"|t}}</span>  <a href="#">{{ "on {0}" | t: dateTime | raw }}</a>
+                                </li>
+                                <li>
+                                    <span>{{"Posted By:"|t}}</span>  <a href="#">{{ Model.ContentItem.Author }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <h3>{{Model.ContentItem.DisplayText}}</h3>
+                        {{ Model.Content.MarkdownBodyPart | shape_render }}
+                        <ul class="wp-block-gallery columns-3">
+                            {% if Model.ContentItem.Content.NewsPost.image1.Paths != null %}
+                            <li class="blocks-gallery-item">
+                                <figure>
+                                    {{Model.ContentItem.Content.NewsPost.image1.Paths.first | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag  }}
+                                </figure>
+                            </li>
+                            {% endif %}
+                            {% if Model.ContentItem.Content.NewsPost.image2.Paths != null %}
+                            <li class="blocks-gallery-item">
+                                <figure>
+                                    {{Model.ContentItem.Content.NewsPost.image2.Paths.first | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag  }}
+                                </figure>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        {{ Model.Content.HtmlBodyPart | shape_render }}
+                    </div>
+                    
+                    <div class="article-footer">
+                        {{ Model.Content.NewsPost-Category | shape_render}}
+                        <div></div>
+                        {{ Model.Content.NewsPost-Tags | shape_render }}
+                        
+                        {{ Model.Content.ContentsMetadata | shape_render }}
+
+                        
+
+                        <div class="article-share">
+                            <ul class="social">
+                                <li><span>Share:</span></li>
+                                <li>
+                                    <a href="#"> <i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fab fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area" id="secondary">
+                    <section class="widget widget_search">
+                        <form class="search-form search-top" action="{{ "~/search" | href }}" method="get">
+                            <label>
+                                <span class="screen-reader-text">Search for:</span>
+                                <input name="Terms" type="text" class="search-field" placeholder="{{ "Enter your search term(s)" |t }}" autofocus>
+                            </label>
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </section>
+                    <section class="widget widget_scientech_posts_thumb">
+                        <h3 class="widget-title">{{ "Recent Posts" |t }}</h3>
+
+                        {% assign recentBlogPosts = Queries.NewsLP | query %}
+                        {% for item in recentBlogPosts %}
+                        <article class="item">
+                            <a href="#" class="thumb">
+                                <span class="fullimage cover bg2" role="img">
+                                    {{item.ContentItem.Content.NewsPost.Image.Paths.first | asset_url  | resize_url: width:80, height:80, mode:'crop' | img_tag  }}
+                                </span>
+                            </a>
+                            {% a display_for:item.ContentItem %}
+                            <div class="info">
+                                <h4 class="title usmall">
+                                    {{ item | display_text }}
+                                </h4>
+                            </div>
+                            {% enda %}
+
+
+
+                        </article>
+                        {% endfor %}
+
+
+                    </section>
+
+
+                    {% shape "term", alias: "alias:categories" %}
+                    {% shape "term", alias: "alias:tags" %}
+
+
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Blog Details Area -->

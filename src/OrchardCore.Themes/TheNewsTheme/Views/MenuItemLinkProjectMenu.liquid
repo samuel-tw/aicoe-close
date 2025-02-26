@@ -1,0 +1,26 @@
+
+
+<a class="accordion-title" href="javascript:void(0)">
+    <i class="fa fa-caret-down"></i>
+    {{ Model.ContentItem.DisplayText }}
+</a>
+
+<div class="accordion-content">
+    {% if Model.HasItems %}
+
+
+    {% for item in Model.Items %}
+
+
+
+    <i class="bi bi-link-45deg"></i> <a href="{{item.ContentItem.Content.LinkMenuItemPart.Url}}"> {{item.ContentItem.Content.LinkMenuItemPart.Name}}</a></i>
+    <p></p>
+
+
+
+    {% endfor %}
+
+    {% endif %}
+
+</div>
+

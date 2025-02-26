@@ -1,0 +1,9 @@
+{% assign link = Model.ContentItem.Content.LinkMenuItemPart %}
+
+{% if Model.HasItems %}
+<a href="{{ link.Url | href }}" class="nav-link" data-bs-toggle="dropdown">{{ Model.ContentItem.DisplayText }}<em class="fas fa-chevron-down"></em></a>
+{% else %}
+<a class="nav-link" href="{{ link.Url | href }}">{{ Model.ContentItem.DisplayText }}</a>
+{% endif %}
+
+

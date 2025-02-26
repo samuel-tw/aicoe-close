@@ -1,0 +1,12 @@
+<div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+        {% for item in Model.Items %}
+        {{ item | shape_render }}
+
+        {% endfor %}
+
+         {% shape "ContentCulturePicker" %}
+    </ul>
+</div>
+
+

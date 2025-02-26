@@ -1,0 +1,11 @@
+
+<div class="col-lg-10 offset-lg-1">
+    <div class="faq-accordion">
+        <ul class="accordion">
+            {% for item in Model.Items %}
+            {% shape_add_alternates item "MenuItem__ProjectMenu" %}
+            {{ item | shape_render }}
+            {% endfor %}
+        </ul>
+    </div>
+</div>

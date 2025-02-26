@@ -1,0 +1,76 @@
+{% zone "Header" %}
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <ul>
+                        <!--
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                            -->
+                        <li>{{ Model.ContentItem.Content.Article.Subtitle.Text }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endzone %}
+
+
+{{ Model.Content.ContentsMetadata.Value }}
+{{ Model.Content.ContentsMetadata | shape_render }}
+
+
+
+<section class="privacy-policy ptb-100">
+    <div class="container">
+        <button type="button" class="btn btn-warning zoomin"><i class="bi bi-zoom-in"></i>{{"Zoom In"|t}}</button>
+        <button type="button" class="btn btn-warning zoomout"><i class="bi bi-zoom-out"></i>{{"Zoom Out"|t}}</button>
+
+        <hr />
+        <div class="single-privacy" id="example">
+
+
+            {{ Model.Content.BagPart | shape_render }}
+            {{ Model.Content.HtmlBodyPart | shape_render }}
+            {{ Model.Content.FlowPart | shape_render }}
+            {{ Modle.Content.LiquidPart | shape_render }}
+            {{ Modle.Content | shape_render }}
+
+        </div>
+        {% if Model.ContentItem.Content.Article.GeoPoint.Latitude != "" %}
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.5554744757073!2d1{{Model.ContentItem.Content.Article.GeoPoint.Latitude}}!3d{{Model.ContentItem.Content.Article.GeoPoint.Longitude}}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a96fa7de9ee1%3A0x2f1e1744599b0b5c!2zMTA0OTHlj7DljJfluILkuK3lsbHljYDplbflronmnbHot6_kuIDmrrUxOOiZnzg!5e0!3m2!1szh-TW!2stw!4v1665487304388!5m2!1szh-TW!2stw" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+
+
+{% scriptblock at: "Foot" %}
+
+
+    $('#example').FontSize({
+        increaseTimes: 10,
+        reduceTimes: 10
+    });
+    $('#example').FontSize({
+        step: 20
+    });
+    $('#example').FontSize({
+        increaseBtn: '.zoomin',
+        reduceBtn: '.zoomout'
+    });
+
+{% endscriptblock %}

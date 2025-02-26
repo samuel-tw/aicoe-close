@@ -1,0 +1,47 @@
+{% zone "Header" %}
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>{{ Model.ContentItem.Content.Article.Subtitle.Text }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endzone %}
+
+
+{{ Model.Content.ContentsMetadata.Value }}
+{{ Model.Content.ContentsMetadata | shape_render }}
+
+
+
+<section class="privacy-policy ptb-100">
+    <div class="container">
+
+        <div class="single-privacy" id="example">
+
+
+            {{ Model.Content.HtmlBodyPart | shape_render }}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+

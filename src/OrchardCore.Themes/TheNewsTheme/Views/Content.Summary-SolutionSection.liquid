@@ -1,0 +1,99 @@
+
+<!-- Start Tabs Solutions Section  Samuel 0322
+<section class="tab-section pt-30 pb-100">
+    <div class="container">
+        <div class="tab solutions-list-tab">
+            <ul class="tabs">
+                <li>
+                    <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink1.Url }}">
+                        <span>{{Model.ContentItem.Content.SolutionSection.SolutionLink1.Text }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink2.Url }}">
+                        <span>{{Model.ContentItem.Content.SolutionSection.SolutionLink2.Text }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink3.Url }}">
+                        <span>{{Model.ContentItem.Content.SolutionSection.SolutionLink3.Text }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ Model.ContentItem.Content.SolutionSection.SolutionLink4.Url }}">
+                        <span>{{Model.ContentItem.Content.SolutionSection.SolutionLink4.Text }}</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab_content">
+                <div class="tabs_item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <div class="tab-solution-content">
+                               
+                                <h3>{{ Model.ContentItem.Content.SolutionSection.SolutionTitle1.Text }}</h3>
+                           
+
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionDescription1.Markdown | markdownify | raw }}
+
+                          
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="tab-image">
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionImage1.Paths.first | asset_url  | resize_url: width:550, height:450, mode:'crop' | img_tag  }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs_item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <div class="tab-solution-content">
+                                <h3>{{ Model.ContentItem.Content.SolutionSection.SolutionTitle2.Text}}</h3>
+
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionDescription2.Markdown | markdownify | raw }}
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="tab-image">
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionImage2.Paths.first | asset_url  | resize_url: width:550, height:450, mode:'crop' | img_tag  }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs_item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <div class="tab-solution-content">
+                                <h3>{{ Model.ContentItem.Content.SolutionSection.SolutionTitle3.Text }}</h3>
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionDescription3.Markdown | markdownify | raw }}
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="tab-image">
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionImage3.Paths.first | asset_url  | resize_url: width:550, height:450, mode:'crop' | img_tag  }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs_item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <div class="tab-solution-content">
+                                <h3>{{ Model.ContentItem.Content.SolutionSection.SolutionTitle4.Text }}</h3>
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionDescription4.Markdown | markdownify | raw }}
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="tab-image">
+                                {{ Model.ContentItem.Content.SolutionSection.SolutionImage4.Paths.first | asset_url  | resize_url: width:550, height:450, mode:'crop' | img_tag  }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Tabs Solutions Section -->

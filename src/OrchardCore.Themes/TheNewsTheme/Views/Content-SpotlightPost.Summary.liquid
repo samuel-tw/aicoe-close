@@ -1,0 +1,67 @@
+{% assign path = Model.ContentItem.Content.BlogPost.Image.Paths.first %}
+{% assign text = Model.ContentItem.Content.BlogPost.Image.MediaTexts.first %}
+{% assign anchor = Model.ContentItem.Content.BlogPost.Image.Anchors.first %}
+
+
+<div class="col-lg-4 col-md-6">
+    <div class="blog-single-item">
+        
+        <div class="blog-image">
+            
+            {% if Model.ContentItem.Content.SpotlightPost.Tumbnail.Paths.first != null %}
+            
+            {{ Model.ContentItem.Content.SpotlightPost.Tumbnail.Paths | asset_url  | resize_url: width:450, height:300, mode:'crop' | img_tag }}
+            
+
+            {% elsif Model.ContentItem.Content.SpotlightPost.Banner.Paths.first != null %}
+            <a href="{{ Model.ContentItem.Content.SpotlightPost.Banner.Paths.first| asset_url}}" data-fancybox="gallery" data-caption="{{Model.ContentItem.Content.SpotlightPost.Subtitle.Text  }}">
+                {{ Model.ContentItem.Content.SpotlightPost.Banner.Paths.first| asset_url| resize_url: width:450, height:300, mode:'crop' | img_tag  }}
+            </a>
+               {% else %}
+            <img src={{"/TheNewsTheme/assets/img/blog/blog-1.jpg"}} alt="image">
+
+
+            {% endif %}
+
+
+
+
+
+        </div>
+        <div class="blog-description">
+            <ul class="blog-list">
+                {% if Model.ContentItem.Content.SpotlightPost.Issuer.Text != "" %}
+                <li>
+                    <i class="fa fa-user-alt"></i> {{Model.ContentItem.Content.SpotlightPost.Issuer.Text }}
+                </li>
+                {% endif %}
+
+                {% if Model.ContentItem.Content.SpotlightPost.Date.Value != "" %}
+                <li>
+                    <i class="fas fa-calendar-week"></i>
+                        <span>
+                            {{"Posted On:  " | t }} {{ Model.ContentItem.Content.SpotlightPost.Date.Value | date:  " %Y-%m-%d"  }}
+                        </span>
+                </li>
+                {% endif %}
+
+            </ul>
+            <div class="blog-content">
+
+                <h3 data-toggle="tooltip" data-placement="top" title="{{Model.ContentItem.DisplayText  }}" >
+
+                    {{ Model.ContentItem.DisplayText | truncate: 51, "..."  }}
+
+                </h3>
+
+                <p>{{Model.ContentItem.Content.SpotlightPost.Subtitle.Text | truncate: 200  }}</p>
+                {% a display_for:Model.ContentItem %}
+                <div class="blog-btn">
+                    <span class="btn-style-three-js">{{ "Continue Reading" |t }}  <span></span></span>
+                </div>
+                {% enda %}
+            </div>
+        </div>
+    </div>
+</div>
+

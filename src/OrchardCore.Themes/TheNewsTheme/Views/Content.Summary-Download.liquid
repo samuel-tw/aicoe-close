@@ -1,0 +1,25 @@
+
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row w-auto p-3"">
+            {% if  Model.ContentItem.Content.Download.Thumbnail.Paths.first != null %}
+            {{ Model.ContentItem.Content.Download.Thumbnail.Paths.first | asset_url  | resize_url: width:200, height:100, mode:'clip' | img_tag  }}
+            {% endif %}
+            <div>
+                <a href="{{ Model.ContentItem.Content.Download.Link.Url }}"><h4>{{ Model.ContentItem.Content.Download.Link.Text }}</h4></a>
+
+                {{ Model.ContentItem.Content.Download.HTML.Html |liquid }}
+                {% if  Model.ContentItem.Content.Download.File.Paths.first != null %}
+                <a href="{{ Model.ContentItem.Content.Download.File.Paths.first | asset_url}}" download>
+
+                    <i class="bi bi-file-earmark-arrow-down-fill"></i> {{ Model.ContentItem.DisplayText }}
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+

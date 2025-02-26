@@ -1,0 +1,122 @@
+{% zone "Header" %}
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>{{ Model.Content.HtmlBodyPart | shape_render }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endzone %}
+<section class="choose-area pt-100 pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>{{"Thematic Research Projects" |t }}</h2>
+                </div>
+            </div>
+            {% assign TeamLeaders = Queries.ResumeSearch | query %}
+            {% for item in TeamLeaders %}
+            
+            {% if item.Content.Resume.CoreTechonologyTeamLeader.Value %}
+            {% elsif Culture.Name == item.Content.LocalizationPart.Culture %}
+            <div class="col-lg-3 col-md-6">
+                {% a display_for:item.ContentItem %}
+                <div class="single-team-box">
+                    <div class="team-image">
+                        <div class="team-info">
+
+                        </div>
+                        {% if  item.Content.Resume.Avator.Paths != null %}
+                        {{ item.Content.Resume.Avator.Paths.first | asset_url  | resize_url: width:400, height:450, mode:'crop' | img_tag }}
+                        {% else %}
+                        <img src="/TheAicoeTheme/assets/img/avator.jpeg">
+                        {% endif %}
+
+                        <!--
+                <div class="team-social-icon">
+                    <a href="#" class="social-color-1"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-color-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-color-3"><i class="fab fa-linkedin"></i></a>
+                </div>
+                -->
+                    </div>
+
+                    <div class="team-info">
+                        <h3>{{ item.DisplayText }} </h3>
+                        <span>{{ item.Content.Resume.Experience1CN.Text }}</span>
+                    </div>
+
+                </div>
+                {% enda %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+
+
+        <hr />
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>{{"Core Technology PIs" |t }}</h2>
+                </div>
+            </div>
+
+            {% assign item = null%}
+
+            {% for item in TeamLeaders %}
+
+            {% if item.Content.Resume.CoreTechonologyTeamLeader.Value and Culture.Name == item.Content.LocalizationPart.Culture %}
+            <div class="col-lg-3 col-md-6">
+                {% a display_for:item.ContentItem %}
+                <div class="single-team-box">
+
+
+                    <div class="team-image">
+                        <div class="team-info">
+
+                        </div>
+                        {% if  item.Content.Resume.Avator.Paths != null %}
+                        {{ item.Content.Resume.Avator.Paths.first | asset_url  | resize_url: width:400, height:450, mode:'crop' | img_tag }}
+                        {% else %}
+                        <img src="/TheAicoeTheme/assets/img/avator.jpeg">
+                        {% endif %}
+                        <!--
+                    <div class="team-social-icon">
+                        <a href="#" class="social-color-1"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-color-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-color-3"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                -->
+
+                    </div>
+
+                    <div class="team-info">
+                        <h3>{{ item.DisplayText }} </h3>
+                        <span>{{ item.Content.Resume.Experience1CN.Text }}</span>
+                    </div>
+
+                </div>
+                {% enda %}
+            </div>
+            {% endif %}
+
+            {% endfor %}
+        </div>
+            </div>
+           
+        
+</section>

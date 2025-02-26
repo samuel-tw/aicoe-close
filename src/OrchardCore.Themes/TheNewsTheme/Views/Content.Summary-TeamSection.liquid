@@ -1,0 +1,49 @@
+<!-- Start Team Section -->
+<section class="team-area pt-30 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                </div>
+            </div>
+            {% assign recentBlogPosts = Queries.HomePageTeam | query %}
+            {% for item in recentBlogPosts %}
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="single-team-box">
+                    <div class="team-image">
+                        <div class="team-info">
+                            <h2>{{ Model.ContentItem.DisplayText}}</h2>
+                        </div>
+                        {% if  item.Content.Resume.Avator.Paths != null %}
+                        {{ item.Content.Resume.Avator.Paths.first | asset_url  | resize_url: width:400, height:450, mode:'crop' | img_tag }}
+                        {% else %}
+                        <img src="/TheNewsTheme/assets/img/avator.jpeg">
+                        {% endif %}
+
+                        <div class="team-social-icon">
+                            <a href="#" class="social-color-1"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-color-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-color-3"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    {% a display_for:item.ContentItem %}
+                    <div class="team-info">
+                        <h3>{{ item.DisplayText }} </h3>
+                        <span>{{ item.Content.Resume.Experience1CN.Text }}</span>
+                    </div>
+                    {% enda %}
+                </div>
+            </div>
+            {% endfor %}
+            
+
+        </div>
+    </div>
+
+</section>
+
+
+
+

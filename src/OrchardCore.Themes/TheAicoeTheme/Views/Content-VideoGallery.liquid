@@ -1,0 +1,33 @@
+{% zone "Header" %}
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>{{ Model.ContentItem.Content.Article.Subtitle.Text }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endzone %}
+
+
+<section class="project-design-one pt-70 pb-100">
+    <div class="container">
+        <div class="row">
+            {{ Model.Content | shape_render }}
+        </div>
+    </div>
+</section>
+
+

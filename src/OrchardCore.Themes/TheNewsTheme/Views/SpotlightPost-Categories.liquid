@@ -1,0 +1,10 @@
+<div>
+    
+    <span> Category:</span>
+    {% assign tagTerms = Model.Field | taxonomy_terms %}
+    {% for tagTerm in tagTerms %}
+    {% a display_for: tagTerm %}
+    {{ tagTerm }}
+    {% enda %}
+    {% endfor %}
+</div>

@@ -1,0 +1,34 @@
+	<!-- Start About Section -->
+	<section class="about-area home-3-about section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-sm-12">
+					<div class="about-image">
+
+						{{Model.ContentItem.Content.AboutSection.Image.Paths.first | asset_url| img_tag  }}
+						<!-- {{Model.ContentItem.Content.AboutSection.Image.Paths.first | asset_url  | resize_url: width:340, height:373, mode:'MAX' | img_tag  }}-->
+					</div>
+					
+				</div>
+				<div class="col-lg-6 col-md-12 col-sm-12">
+					<div class="about-content">
+						<h6>{{Model.ContentItem.Content.TitlePart.Title}}</h6>
+						<h2>{{Model.ContentItem.Content.AboutSection.Subtitle.Text}}</h2>
+						<p>{{Model.ContentItem.Content.AboutSection.ContextTextFull.Text}}</p>
+						<ul class="about-features-list">
+							<li>{{Model.ContentItem.Content.AboutSection.ContextText1.Text}}</li>
+							<li> {{Model.ContentItem.Content.AboutSection.ContextText2.Text}}</li>
+							<li> {{Model.ContentItem.Content.AboutSection.ContextText3.Text}}</li>
+						</ul>
+						<div class="about-content-btn">
+							<a class="btn-style-three-js" href="{{ Model.ContentItem.Content.AboutSection.ReadMore.Url | href }}">{{ Model.ContentItem.Content.AboutSection.ReadMore.Text }}<span></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End About Section -->
+
+ 
+  

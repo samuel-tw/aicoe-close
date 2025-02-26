@@ -1,0 +1,141 @@
+{% zone "Header" %}
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <!--
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>{{ Model.ContentItem.DisplayText }}</li>
+                    </ul>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endzone %}
+
+
+
+
+
+<!-- Start Project Design One Section -->
+<section class="project-design-one pt-70 pb-100">
+    <div class="container">
+        <div class="col-lg-12 col-md-12">
+            <!--
+        <div class="d-flex justify-content-around">
+            <button type="button" id="btn01" class="btn btn-primary btn-lg"><i class="bi bi-check2-square"></i>{{ "Semicond. Manuf." | t }}</button>
+            <button type="button" id="btn02" class="btn btn-primary btn-lg"><i class="bi bi-check2-square"></i>{{ "Medical and health" | t}}</button>
+            <button type="button" id="btn03" class="btn btn-primary btn-lg"><i class="bi bi-check2-square"></i>{{ "Environment" | t }}</button>
+            <button type="button" id="btn04" class="btn btn-primary btn-lg"><i class="bi bi-check2-square"></i>{{ "Smart City" | t }}</button>
+            <button type="button" id="btn05" class="btn btn-primary btn-lg"><i class="bi bi-check2-square"></i>{{ "Services" | t }}</button>
+            <button type="button" id="btn06" class="btn btn-primary btn-lg"><i class="bi bi-check2-square"></i>{{ "Core Tech." | t }}</button>
+        </div>
+        -->
+        </div>
+        <div class="row">
+            <button type="button" id="btn01" class="btn btn-primary btn col-sm"><i class="bi bi-check2-square"></i>{{ "Semicond. Manuf." | t }}</button>
+            <button type="button" id="btn02" class="btn btn-primary btn col-sm"><i class="bi bi-check2-square"></i>{{ "Medical and health" | t}}</button>
+            <button type="button" id="btn03" class="btn btn-primary btn col-sm"><i class="bi bi-check2-square"></i>{{ "Environment" | t }}</button>
+            <button type="button" id="btn04" class="btn btn-primary btn col-sm"><i class="bi bi-check2-square"></i>{{ "Smart City" | t }}</button>
+            <button type="button" id="btn05" class="btn btn-primary btn col-sm"><i class="bi bi-check2-square"></i>{{ "Services" | t }}</button>
+            <button type="button" id="btn06" class="btn btn-primary btn col-sm"><i class="bi bi-check2-square"></i>{{ "Core Tech." | t }}</button>
+
+
+
+
+        </div>
+        <div class="jumbotron">
+            <ul class="list-group list-group-flush">
+
+                {{ Model.Content | shape_render }}
+            </ul>
+
+
+        </div>
+    </div>
+
+
+
+</section>
+<!-- End Project Design One Section -->
+{% scriptblock at: "Foot" %}
+
+
+$( "#btn01" ).click(function() {
+    if ($(this).hasClass("btn-primary")) {
+        $(this).removeClass("btn-primary").addClass("btn-light");
+        $(".PC01").hide("slow");
+        }
+        else {
+            $(this).removeClass("btn-light").addClass("btn-primary");
+            $(".PC01").show("slow");
+            }
+    });
+
+
+
+
+$( "#btn02" ).click(function() {
+    if ($(this).hasClass("btn-primary")) {
+        $(this).removeClass("btn-primary").addClass("btn-light");
+        $(".PC02").hide("slow");
+        }
+        else {
+            $(this).removeClass("btn-light").addClass("btn-primary");
+            $(".PC02").show("slow");
+            }
+    });
+
+$( "#btn03" ).click(function() {
+    if ($(this).hasClass("btn-primary")) {
+        $(this).removeClass("btn-primary").addClass("btn-light");
+         $(".PC03").hide("slow");
+        }
+        else {
+            $(this).removeClass("btn-light").addClass("btn-primary");
+            $(".PC03").show("slow");
+            }
+    });
+
+$( "#btn04" ).click(function() {
+    if ($(this).hasClass("btn-primary")) {
+        $(this).removeClass("btn-primary").addClass("btn-light");
+        $(".PC04").hide("slow");
+        }
+        else {
+            $(this).removeClass("btn-light").addClass("btn-primary");
+            $(".PC04").show("slow");
+            }
+    });
+$( "#btn05" ).click(function() {
+    if ($(this).hasClass("btn-primary")) {
+        $(this).removeClass("btn-primary").addClass("btn-light");
+        $(".PC05").hide("slow");
+        }
+        else {
+            $(this).removeClass("btn-light").addClass("btn-primary");
+            $(".PC05").show("slow");
+            }
+    });
+$( "#btn06" ).click(function() {
+    if ($(this).hasClass("btn-primary")) {
+        $(this).removeClass("btn-primary").addClass("btn-light");
+        $(".PC06").hide("slow");
+        }
+        else {
+            $(this).removeClass("btn-light").addClass("btn-primary");
+            $(".PC06").show("slow");
+            }
+    });
+
+
+
+
+{% endscriptblock %}

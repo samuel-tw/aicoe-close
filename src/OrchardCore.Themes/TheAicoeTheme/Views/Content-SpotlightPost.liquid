@@ -1,0 +1,519 @@
+{% zone "Header" %}
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <ul>
+                        <!--
+    <li>
+        <a href="/">Home</a>
+    </li>
+
+    <li>{{ Model.ContentItem.DisplayText }}</li>
+     -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endzone %}
+
+<!-- Start Blog Details Area -->
+
+<style>
+    .mycontainer {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 61.3% /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    }
+
+    /* Then style the iframe to fit in the container div with full height and width */
+    .responsive-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<section class="blog-details-area section-padding">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-8 col-md-12">
+
+                {{Model.ContentItem.Content.SpotlightPost | console_log}}
+                <div class="blog-details-desc">
+                    {% if Model.ContentItem.Content.SpotlightPost.Banner.Paths != null  %}
+                    <div class="article-image">
+                        <div class="f-carousel" id="myCarousel">
+                            {% for Image in Model.ContentItem.Content.SpotlightPost.Banner.Paths %}
+
+                            <a href="{{ Image |asset_url }}" class="f-carousel__slide" data-fancybox="gallery">
+
+                                {{Image | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag}}
+
+                            </a>
+
+                            {% endfor %}
+
+                        </div>
+                        <!--
+        {{Model.ContentItem.Content.SpotlightPost.Banner.Paths.first | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag}}
+        -->
+                    </div>
+                    {% endif %}
+                    <div class="article-content">
+                        <div class="entry-meta">
+                            <ul>
+                                {% if Model.ContentItem.Content.SpotlightPost.Date.Value != null %}
+                                <li>
+                                    <span>
+                                        {{"Posted On:  " | t }} {{ Model.ContentItem.Content.SpotlightPost.Date.Value | date:  " %Y-%m-%d"  }}
+                                    </span>
+                                </li>
+                                {% endif %}
+                                {% if Model.ContentItem.Content.SpotlightPost.Issuer.Text != null %}
+                                <li>
+                                    <span>{{ "Source:" | t }}</span>  <a href="#">{{ Model.ContentItem.Content.SpotlightPost.Issuer.Text }}</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                        
+                        {% if Model.ContentItem.Content.SpotlightPost.HindIntroduction.Value != true %}
+                        <div>
+                            <h3>{{"Introduction" | t }}</h3>
+                            {{ Model.Content.HtmlBodyPart | shape_render }}
+
+                        </div>
+                        {%endif%}
+
+                        <ul class="wp-block-gallery columns-3">
+                            <li class="blocks-gallery-item">
+
+
+                                <figure>
+
+                                    <div class="f-carousel" id="myCarousel1">
+
+                                        {% for Image in Model.ContentItem.Content.SpotlightPost.Image1.Paths %}
+
+                                        <a href="{{ Image |asset_url }}" class="f-carousel__slide" data-fancybox="gallery1">
+
+                                            {{Image | asset_url  | resize_url: width:800, height:500, mode:'crop' | img_tag}}
+
+                                        </a>
+
+                                        {% endfor %}
+
+                                    </div>
+                                </figure>
+
+                            </li>
+
+                            {% assign RawAddress1 = Model.ContentItem.Content.SpotlightPost.Video1.RawAddress %}
+                            {% assign RawAddress2 = Model.ContentItem.Content.SpotlightPost.Video2.RawAddress %}
+                            {% assign RawAddress3 = Model.ContentItem.Content.SpotlightPost.Video3.RawAddress %}
+                            {% assign RawAddress4 = Model.ContentItem.Content.SpotlightPost.Video4.RawAddress %}
+                            {% assign RawAddress5 = Model.ContentItem.Content.SpotlightPost.Video5.RawAddress %}
+                            {% assign RawAddress6 = Model.ContentItem.Content.SpotlightPost.Video6.RawAddress %}
+
+                            <li class="blocks-gallery-item">
+
+                                <figure>
+                                    <div class="f-carousel" id="myCarousel2">
+                                        {% if RawAddress1 != nul %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" href="{{ RawAddress1}}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" width="800" height="500" src="http://img.youtube.com/vi/{{ RawAddress1| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress2 != null  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress2 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress2| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress3 != null  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress3 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress3| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress4 != null  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress4 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress4| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress5 != null  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress5 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress5| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                        {% if RawAddress6 != null  %}
+
+                                        <a class="f-carousel__slide" data-fancybox="gallery2" width="800" height="500" href="{{ RawAddress6 }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+                                            <img class="card-img-top img-fluid" src="http://img.youtube.com/vi/{{ RawAddress6| replace: 'https://www.youtube.com/watch?v=','' }}/mqdefault.jpg" />
+                                            <i class="bi bi-youtube"></i>
+
+                                        </a>
+                                        {% endif %}
+                                    </div>
+
+                                </figure>
+
+
+                            </li>
+                        </ul>
+
+                        {{ Model.Content.MarkdownBodyPart | shape_render }}
+
+                        <div class="article-footer">
+
+                            <div class="article-share">
+                                <ul class="social">
+
+
+                                    {% if Model.ContentItem.Content.SpotlightPost.HindTags.Value != true%}
+                                    <li>
+                                        <span>
+                                            {{"Resources: " |t }}
+                                        </span>
+                                    </li>
+                                    {% endif %}
+                                    {% assign Paths =  Model.ContentItem.Content.SpotlightPost.Files.Paths  %}
+
+                                    {% if Paths != null %}
+                                    {% assign MediaTexts =  Model.ContentItem.Content.SpotlightPost.Files.MediaTexts  %}
+
+                                    {% for Path in Paths %}
+
+
+                                    {% for MediaText in MediaTexts limit:1 offset: forloop.index0 %}
+
+
+                                    <li>
+                                        <a href="{{Path | asset_url}}" data-toggle="tooltip" title="{{MediaText}}"
+                                           data-fancybox
+                                           data-type="iframe"
+                                           data-preload="false"> <i class="bi bi-file-arrow-down-fill"></i></a>
+                                    </li>
+                                    {%endfor %}
+
+
+
+
+                                    {% endfor %}
+                                    {%endif %}
+
+                                    {% if Model.ContentItem.Content.SpotlightPost.Web1.Url != null  %}
+                                    <li style="font-size:18px">
+
+                                        <a href="{{Model.ContentItem.Content.SpotlightPost.Web1.Url}}" data-toggle="tooltip"
+                                           title="{{Model.ContentItem.Content.SpotlightPost.Web1.Text}}"> <i class="bi bi-folder-symlink-fill"></i></a>
+                                    </li>
+                                    {%endif %}
+                                    {% if Model.ContentItem.Content.SpotlightPost.Web2.Url != null  %}
+                                    <li style="font-size:18px">
+
+                                        <a href="{{Model.ContentItem.Content.SpotlightPost.Web2.Url}}" data-toggle="tooltip"
+                                           title="{{Model.ContentItem.Content.SpotlightPost.Web2.Text}}"><i class="bi bi-folder-symlink-fill"></i></a>
+                                    </li>
+                                    {%endif %}
+                                    {% if Model.ContentItem.Content.SpotlightPost.Web3.Url != null  %}
+                                    <li style="font-size:18px">
+
+                                        <a href="{{Model.ContentItem.Content.SpotlightPost.Web3.Url}}" data-toggle="tooltip"
+                                           data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.Web3.Text}}"> <i class="bi bi-folder-symlink-fill"></i></a>
+                                    </li>
+                                    {%endif %}
+
+
+
+
+                                    {% if Model.ContentItem.Content.SpotlightPost.Git1.Url != null  %}
+
+                                    <li style="font-size:18px">
+
+                                        <a href="{{Model.ContentItem.Content.SpotlightPost.Git1.Url}}" data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.Git1.Text}}"> <i class="bi bi-git"></i></a>
+                                    </li>
+                                    {%endif %}
+
+                                    {% if Model.ContentItem.Content.SpotlightPost.Git2.Url != null  %}
+                                    <li style="font-size:18px">
+
+                                        <a href="{{Model.ContentItem.Content.SpotlightPost.Git2.Url}}" data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.Git2.Text}}"> <i class="bi bi-git"></i></a>
+                                    </li>
+                                    {%endif %}
+                                    {% if Model.ContentItem.Content.SpotlightPost.Git3.Url != null  %}
+                                    <li style="font-size:18px">
+
+                                        <a href="{{Model.ContentItem.Content.SpotlightPost.Git3.Url}}" data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.Git3.Text}}"> <i class="bi bi-git"></i></a>
+                                    </li>
+                                    {%endif %}
+
+
+
+
+                                    {% if Model.ContentItem.Content.SpotlightPost.iframe2.Url != null  %}
+                                    <li style="font-size:18px">
+                                        <a href="{{ Model.ContentItem.Content.SpotlightPost.iframe2.Url }} "
+                                           data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.iframe2.Text}}"
+                                           data-fancybox
+                                           data-type="iframe"
+                                           data-preload="false"><i class="bi bi-camera-reels-fill"></i></a>
+
+                                    </li>
+                                    {% endif %}
+
+
+                                    {% if Model.ContentItem.Content.SpotlightPost.iframe3.Url != null  %}
+                                    <li style="font-size:18px">
+                                        <a href="{{ Model.ContentItem.Content.SpotlightPost.iframe3.Url }} "
+                                           data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.iframe3.Text}}"
+                                           data-fancybox
+                                           data-type="iframe"
+                                           data-preload="false"><i class="bi bi-camera-reels-fill"></i></a>
+
+                                    </li>
+                                    {% endif %}
+
+                                    {% if Model.ContentItem.Content.SpotlightPost.Film1.Url != null  %}
+                                    <li style="font-size:18px">
+                                        <a data-fancybox href="{{ Model.ContentItem.Content.SpotlightPost.Film1.Url }}"
+                                           data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.Film1.Text}}">
+                                            <i class="bi bi-filetype-mp4"></i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    {% if Model.ContentItem.Content.SpotlightPost.Film2.Url != null  %}
+                                    <li style="font-size:18px">
+                                        <a data-fancybox href="{{ Model.ContentItem.Content.SpotlightPost.Film2.Url }}"
+                                           data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.Film2.Text}}">
+                                            <i class="bi bi-filetype-mp4"></i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    {% if Model.ContentItem.Content.SpotlightPost.Film3.Url != null  %}
+                                    <li style="font-size:18px">
+                                        <a data-fancybox href="{{ Model.ContentItem.Content.SpotlightPost.Film3.Url }}"
+                                           data-toggle="tooltip" title="{{Model.ContentItem.Content.SpotlightPost.Film3.Text}}">
+                                            <i class="bi bi-filetype-mp4"></i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+
+
+                        {% if Model.ContentItem.Content.SpotlightPost.iframe1.Url != null  %}
+
+                        <div class="mycontainer mt-2">
+
+                            {% assign url= Model.ContentItem.Content.SpotlightPost.iframe1.Url %}
+
+                            <iframe class="responsive-iframe" src="{{ url | replace: 'pub' , 'embed'  }}" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+                        </div>
+
+                        {% endif %}
+
+
+
+                        <hr class="my-4" />
+
+                        {% if Model.ContentItem.Content.SpotlightPost.Keyword1.Text != null %}
+
+                        <h5 class="shadow p-3 mb-5 bg-white rounded">
+                            <span><i class="bi bi-key-fill"></i>{{ " Keywords :      " | t}}</span>
+
+                            <span class="badge badge-info">{{ Model.ContentItem.Content.SpotlightPost.Keyword1.Text  }}</span>
+                            <span class="badge badge-info">{{ Model.ContentItem.Content.SpotlightPost.Keyword2.Text  }}</span>
+                            <span class="badge badge-info">{{ Model.ContentItem.Content.SpotlightPost.Keyword3.Text  }}</span>
+                            <span class="badge badge-info">{{ Model.ContentItem.Content.SpotlightPost.Keyword4.Text  }}</span>
+                            <span class="badge badge-info">{{ Model.ContentItem.Content.SpotlightPost.Keyword5.Text  }}</span>
+
+                        </h5>
+
+
+
+
+                        <h5 class="shadow p-3 mb-5 bg-white rounded">
+                            <i class="bi bi-postcard-fill"></i>
+                            {% assign ContentId=Model.ContentItem.Content.SpotlightPost.ResearchProject.ContentItemIds %}
+                            {% assign Project = Content.ContentItemId[ContentId]%}
+                            {{ " Research Project : " |t}}<a href="{{ Project.Content.AutoroutePart.Path }}">{{ Project.DisplayText }}</a>
+                        </h5>
+
+                        <h5 class="shadow p-3 mb-5 bg-white rounded">
+                            <i class="bi bi-microsoft-teams"></i>
+                            {% assign ContentId=Model.ContentItem.Content.SpotlightPost.PI.ContentItemIds %}
+                            {% assign PI = Content.ContentItemId[ContentId]%}
+                            {{ " Principal Investigator : " |t}}<a href="{{ PI.Content.AutoroutePart.Path }}">{{ PI.DisplayText }}</a>
+                        </h5>
+
+                        <h5 class="shadow p-3 mb-5 bg-white rounded">
+                            <i class="bi bi-person-fill-gear"></i>
+                            {% assign ContentId=Model.ContentItem.Content.SpotlightPost.CoPI.ContentItemIds %}
+                            {% assign CoPI = Content.ContentItemId[ContentId]%}
+                            {{ " Co-Principal Investigator : " |t}} <a href="{{ CoPI.Content.AutoroutePart.Path }}">{{ CoPI.DisplayText }}</a>
+
+                        </h5>
+
+                        {% endif %}
+                    </div>
+                    <br />
+
+                   
+                    <div class="article-footer">
+   
+                        {% if Model.ContentItem.Content.SpotlightPost.HindTags.Value != true %}
+                        <div class="article-tags">
+                            {% if Culture.Name == "en" %}
+
+
+
+                            {{ Model.Content.SpotlightPost-Tags  | shape_render}}
+
+                            {% else %}
+
+
+                            {{ Model.Content.SpotlightPost-TagsCN  | shape_render}}
+                            {% endif %}
+
+
+                        </div>
+                        <div class="article-tags">
+                            {% if Culture.Name == "en" %}
+
+
+
+                            {{ Model.Content.SpotlightPost-Categories | shape_render}}
+
+                            {% else %}
+
+
+                            {{ Model.Content.SpotlightPost-CategoriesCN  | shape_render}}
+
+                            {% endif %}
+
+
+                        </div>
+                        {% endif %}
+
+
+                        <!--
+    <div class="article-share">
+        <ul class="social">
+            <li>
+                <span>
+                    {{"Share:" |t }}
+                </span>
+            </li>
+            <li>
+                <a href="#"> <i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li>
+                <a href="#"> <i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+                <a href="#"> <i class="fab fa-instagram"></i></a>
+            </li>
+        </ul>
+    </div>
+        -->
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area" id="secondary">
+                    <section class="widget widget_search">
+                        <form class="search-form search-top" action="{{ "~/search" | href }}" method="get">
+                            <label>
+                                <span class="screen-reader-text">Search for:</span>
+                                <input name="Terms" type="text" class="search-field" placeholder="{{ "Enter your search term(s)" |t }}" autofocus>
+                            </label>
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </section>
+                    <section class="widget widget_scientech_posts_thumb">
+                        <h3 class="widget-title">{{ "Recent Posts" |t }}</h3>
+
+                        {% assign recentBlogPosts = Queries.NewsLP | query %}
+                        {% for item in recentBlogPosts %}
+                        <article class="item">
+                            <a href="#" class="thumb">
+                                <span class="fullimage cover bg2" role="img">
+                                    {{item.ContentItem.Content.NewsPost.Image.Paths.first | asset_url  | resize_url: width:80, height:80, mode:'crop' | img_tag  }}
+                                </span>
+                            </a>
+                            {% a display_for:item.ContentItem %}
+                            <div class="info">
+                                <h4 class="title usmall">
+                                    {{ item | display_text }}
+                                </h4>
+                            </div>
+                            {% enda %}
+
+
+                        </article>
+
+                        {% endfor %}
+
+
+
+
+                    </section>
+
+
+
+                    <section class="widget widget_tag_cloud">
+                        {% if Culture.Name == "en" %}
+                        {% shape "term", alias: "alias:projectscategories" %}
+                        {% shape "term", alias: "alias:tags" %}
+                        {% else %}
+                        {% shape "term", alias: "alias:project-categories-cn" %}
+                        {% shape "term", alias: "alias:tagsCN" %}
+                        {% endif %}
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Blog Details Area -->

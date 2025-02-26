@@ -1,0 +1,68 @@
+{% zone "Header" %}
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>{{ Model.ContentItem.DisplayText }}</h2>
+                    <ul>
+                        <!--
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        -->
+                        <li>{{ Model.Content.HtmlBodyPart | shape_render }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endzone %}
+
+
+
+<section class="privacy-policy ptb-100">
+    <div class="container">
+        <button type="button" class="btn btn-warning zoomin"><i class="bi bi-zoom-in"></i>{{"Zoom In"|t}}</button>
+        <button type="button" class="btn btn-warning zoomout"><i class="bi bi-zoom-out"></i>{{"Zoom Out"|t}}</button>
+
+        <hr />
+            <div id ="example">
+                {{ Model.Content.ListPart | shape_render}} 
+                {% assign previousText = "← "  %}
+                {% assign nextText = "→"  %}
+                {% assign previousClass = "prev page-numbers" | split: " " %}
+                {% assign nextClass = "next page-numbers" | split: " "  %}
+                {% assign itemClasses = "page-numbers current" | split: " " %}
+
+                {% shape_pager Model.Pager previous_text: previousText, next_text: nextText,
+                    previous_class: previousClass, next_class: nextClass, tag_name: "div", item_tag_name: "div", attributes: "{\"key1\": \"value1\",\"key2\":\"value2\"}", item_attributes: "{\"key1\": \"value1\",\"key2\":\"value2\"}", classes: "pagination-area", item_classes: itemClasses %}
+
+                {{ Model.Pager | shape_render }}
+
+
+            </div>
+
+</section>
+
+
+
+
+{% scriptblock at: "Foot" %}
+
+
+    $('#example').FontSize({
+        increaseTimes: 10,
+        reduceTimes: 10
+    });
+    $('#example').FontSize({
+        step: 20
+    });
+    $('#example').FontSize({
+        increaseBtn: '.zoomin',
+        reduceBtn: '.zoomout'
+    });
+
+{% endscriptblock %}
+

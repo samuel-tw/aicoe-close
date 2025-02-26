@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Manifest.cs" />
+    <Compile Include="ResourceManifestOptionsConfiguration.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="1.8.3" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.8.3" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.8.3" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Localization\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+</Project>

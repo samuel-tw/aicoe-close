@@ -1,0 +1,24 @@
+<div class="col-lg-3 col-md-6">
+    <div class="single-team-box">
+        <div class="team-image">
+            <div class="team-info">
+                <h2>{{ Model.ContentItem.DisplayText}}</h2>
+            </div>
+            {% if  Model.ContentItem.Content.TeamItem.Image %}
+            {{ Model.ContentItem.Content.TeamItem.Image.Paths.first | asset_url  | resize_url: width:400, height:450, mode:'crop' | img_tag }}
+            {% else %}
+            
+            {% endif %}
+
+            <div class="team-social-icon">
+                <a href="#" class="social-color-1"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-color-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-color-3"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="team-info">
+            <h3>{{ Model.ContentItem.Content.TeamItem.Name.Text }} </h3>
+            <span>{{ Model.ContentItem.Content.TeamItem.JobTitle.Text }}</span>
+        </div>
+    </div>
+</div>
